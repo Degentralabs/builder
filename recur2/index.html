@@ -99,14 +99,18 @@
                     <div class="category-grid" id="backgrounds-grid"></div> <!-- Change this ID -->
                 </div>
             </div>
-            <div id="styles-tab">
+            <div id="styles">
                 <div class="form-group">
                     <h2 class="background-text">Select a Body Style:</h2>
-                    <div class="category-grid" id="styles-grid"></div> <!-- And this ID -->
+                    <div class="category-grid" id="styles-grid"></div>
                 </div>
             </div>
-            <!-- ... other tabs ... -->
-        </div>
+            <div id="backgrounds" data-tabby-default>
+                <div class="form-group">
+                    <h2 class="background-text">Select a Background:</h2>
+                    <div class="category-grid" id="backgrounds-grid"></div>
+                </div>
+            </div>            
     </form>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12.0.0/dist/js/tabby.polyfills.min.js"></script>
     <script>
@@ -114,7 +118,7 @@
             /* ... existing backgrounds ... */
         ];
     
-        var Styles = [
+        var styles = [
             /* ... existing styles ... */
         ];
 
