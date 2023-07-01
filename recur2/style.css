@@ -26,11 +26,6 @@
   .tab button.active {
     background-color: #ccc;
   }
-  
-  /* Style the tab content */
-  .tab-content > div {
-    display: none;
-}
 
   .category-grid {
     display: flex;
@@ -38,4 +33,3 @@
     gap: 10px;
     justify-content: center;
 }
-  
