@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recursive Pixlpals</title>
+    <style>
+        .form-group {
+            margin-bottom: 1em;
+            color: rgb(255, 255, 255); /* Text color for form group */
+        }
+        .hidden {
+            display: none;
+        }
+        #image-preview {
+            width: 480px;
+            height: 480px;
+            border: 1px solid #000000;
+            background: #000000;
+            position: relative;
+        }
+        #image-preview img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: none; /* Add this line */
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #121212;
+            font-family: 'Silkscreen', sans-serif;
+            color: rgb(255, 255, 255); /* Text color for body */
+        }
+        h1 {
+            color: rgb(255, 255, 255); /* Text color for header */
+        }
+        select {
+            color: rgb(255, 255, 255); /* Text color for dropdown */
+        }
+        .category-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .category-option {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .category-option img {
+            width: 100%;
+            height: 100%;
+        }
+        .background-text {
+            font-size: 14px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+        .tabs a {
+        padding: 10px;
+        text-decoration: none;
+        color: #000; /* Change this to the color you want for all tabs */
+    }
+    .tabs a.active {
+        color: #f00; /* Change this to the color you want for the active tab */
+    }
+</style>
+</head>
+<body>
+    <h1>Recursive Pals</h1>
+    <div id="image-preview">
+        <img id="background-image">
+        <img id="body-image">
+    </div>
+    <form id="punk-form">
+        <div class="tabs">
+            <ul data-tabs>
+                <li><a href="#backgrounds" data-tabby-default>Background</a></li>
+                <li><a href="#styles">Style</a></li>
+                <li><a href="#body">Body</a></li>
+                <li><a href="#head">Head</a></li>
+                <li><a href="#eyes">Eyes</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="backgrounds-tab" data-tabby-default>
+                <div class="form-group">
+                    <h2 class="background-text">Select a Background:</h2>
+                    <div class="category-grid" id="backgrounds-grid"></div> <!-- Change this ID -->
+                </div>
+            </div>
+            <div id="styles-tab">
+                <div class="form-group">
+                    <h2 class="background-text">Select a Body Style:</h2>
+                    <div class="category-grid" id="styles-grid"></div> <!-- And this ID -->
+                </div>
+            </div>
+            <!-- ... other tabs ... -->
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12.0.0/dist/js/tabby.polyfills.min.js"></script>
+    <script>
+        var backgrounds = [
+            /* ... existing backgrounds ... */
+        ];
+    
+        var Styles = [
+            /* ... existing styles ... */
+        ];
+
+        function updateBackgrounds() {
+            var backgroundsDiv = document.getElementById('backgrounds-grid');
+            backgroundsDiv.innerHTML = '';
+
+            for (var i = 0; i < backgrounds.length; i++) {
+                // ... existing JavaScript ...
+
+                console.log('Added background image: ' + backgrounds[i].image);
+            }
+        }
+    
+        function updateStyles() {
+            var stylesDiv = document.getElementById('styles-grid');
+            stylesDiv.innerHTML = '';
+
+            for (var i = 0; i < styles.length; i++) {
+                // ... existing JavaScript ...
+
+                console.log('Added style image: ' + styles[i].image);
+            }
+        }
+    
+        window.addEventListener('DOMContentLoaded', function() {
+            updateBackgrounds();
+            updateStyles();
+        });
+    
+        var tabs = new Tabby('[data-tabs]');
+
+            // Add event listener for tab switching
+    var tabLinks = document.querySelectorAll('.tabs a');
+    tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Remove active class from all tabs
+            tabLinks.forEach(function(tabLink) {
+                tabLink.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Hide all tab content
+            var tabContents = document.querySelectorAll('.tab-content > div');
+            tabContents.forEach(function(tabContent) {
+                tabContent.style.display = 'none';
+            });
+
+            // Show content for clicked tab
+            var tabContent = document.querySelector(this.getAttribute('href'));
+            tabContent.style.display = 'block';
+        });
+    });
+    </script>    
+</body>
+</html>
