@@ -391,8 +391,10 @@ tabLinks.forEach(function(tabLink) {
         document.getElementById('placeholder-text').style.display = 'none';
     });
 });
-        <button id="compile-button">Compile</button>
-    </script>
+    <button id="compile-button">Compile</button>
+
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12.0.0/dist/js/tabby.polyfills.min.js"></script>
+    <script>
 
     function compileSVG() {
             // Get the selected traits
@@ -427,7 +429,5 @@ tabLinks.forEach(function(tabLink) {
         // Add event listener to the compile button
         document.getElementById('compile-button').addEventListener('click', compileSVG);
     </script>
-</body>
-</html>
 </body>
 </html>
