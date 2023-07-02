@@ -324,6 +324,7 @@ function updateEyes() {
 
     
 window.addEventListener('DOMContentLoaded', function() {
+    var tabs = new Tabby('[data-tabs]');
     updateBackgrounds();
     updateStyles();
     updateBody();
@@ -335,8 +336,6 @@ window.addEventListener('DOMContentLoaded', function() {
         tabLink.blur();
     });
 });
-    
-var tabs = new Tabby('[data-tabs]');
 
 // Add event listener for tab switching
 var tabLinks = document.querySelectorAll('.tabs a');
