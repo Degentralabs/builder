@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12.0.0/dist/js/tabby.polyfills.min.js"></script>
     <title>Recursive Pixlpals</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
-            * {
+
+        @font-face {
+            font-family: 'Pixelated MS Sans Serif';
+            src: url('https://testingdd.s3.amazonaws.com/pixel_sans_serif/Pixel+Sans+Serif.ttf') format('truetype');
+        }
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         .form-group {
             margin-bottom: 1em;
             color: rgb(255, 255, 255); /* Text color for form group */
             border: none;
         }
+
         .hidden {
             display: none;
             border: none;
         }
+
         #image-preview-wrapper {
-            border: 0px solid #000000; /* Add this line */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%; /* Make the wrapper div take up the full width of its parent */
+            padding-top: 20px;
         }
+
         #image-preview {
             width: 384px;
             height: 384px;
@@ -28,8 +44,12 @@
             position: relative;
             margin: 0;
             padding: 0;
-            padding-bottom: 20px;
+            padding-bottom: 0px;
             border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         #image-preview img {
             position: absolute;
@@ -50,10 +70,54 @@
             height: 100vh;
             margin-top: 0;
             padding-top: 0px;
-            background: #121212;
-            font-family: 'Silkscreen', sans-serif;
+            background: #008080 ;
+            font-family: 'Pixelated MS Sans Serif', sans-serif;
             color: #121212; /* Text color for body */
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
+
+        .window {
+            z-index: 9999;
+            /* rest of your styles */
+        }
+
+        .desktop-icons {
+            position: absolute;
+            top: 70px;
+            left: 25px;
+            display: grid;
+            grid-template-rows: repeat(auto-fill, 60px);
+            grid-gap: 20px;
+            justify-content: start;
+            align-items: start;
+        }
+
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 60px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .desktop-icon img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .desktop-icon span {
+            font-size: 10px;
+        }
+
+        .desktop-icon:hover {
+            background-color: #0000FF;
+            color: #FFFFFF;
+        }
+
         h1 {
             color: rgb(255, 255, 255); /* Text color for header */
             border: none;
@@ -70,6 +134,8 @@
             justify-content: center;
             color: rgb(0, 0, 0);
             border: none;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
         .category-option {
             width: 50px;
@@ -79,6 +145,8 @@
             border-radius: 5px;
             color: rgb(255, 255, 255);
             border: none;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
         .category-option img {
             width: 100%;
@@ -89,31 +157,36 @@
         .background-text {
             font-size: 14px;
             color: rgb(255, 255, 255);
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .tabs {
-            /* Other styles... */
-            margin-top: 20px; /* Adjust this value to your liking */
-            margin-bottom: 20px;
+
+        .menu {
+            position: relative;
+            width: 100%; /* Adjust as needed */
+            height: 25px; /* Adjust as needed */
+            margin: 0 auto; /* Centers the tab bar */
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .tabs a {
-            color: #fff; /* Change this to the color you want for all tabs */
+
+        .menu a {
+            color: #fff; /* Color of the text in all tabs */
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .tabs a.active {
-            color: rgb(255, 72, 0); /* Change this to the color you want for the active tab */
-        }
-        .tabs ul {
-            list-style-type: none; /* Removes the bullet points */
-            padding: 0; /* Removes the padding */
-            display: flex; /* Makes the list items display in a row */
-            justify-content: space-between; /* Spaces the list items evenly */
-        }
-        .tabs ul li {
-            display: inline; /* Makes the list items display in a line */
-        }
-        .tabs ul li:not(:last-child)::after {
-            content: "|"; /* Adds a pipe character after each list item except the last one */
-            margin: 0 10px; /* Adds some space around the pipe character */
-        }
+
+        .menu li {
+    transition: all 0.3s ease; /* Adjust the duration and easing function as needed */
+}
+
+
+        .menu li[aria-selected="true"] {
+    background-color: #ccc; /* Change to your desired color */
+    border: none; /* Change to your desired color */
+    z-index: 1; /* Makes the selected tab appear in front */
+}
+
         #compile-button {
             align-items: center;
             background-clip: padding-box;
@@ -125,7 +198,7 @@
             color: #fff;
             cursor: pointer;
             display: inline-flex;
-            font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-family: 'Pixelated MS Sans Serif', sans-serif;
             font-size: 10px;
             font-weight: 400;
             justify-content: center;
@@ -143,7 +216,8 @@
             -webkit-user-select: none;
             touch-action: manipulation;
             vertical-align: baseline;
-            font-family: 'Silkscreen', sans-serif;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         #compile-button:hover,
@@ -162,59 +236,206 @@
             transform: translateY(0);
         }
 
+        .instruction-text {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px; /* Adjust as needed */
+            color: #000000;
+        }
+
+        #toolbar {
+            background: #c0c0c0;
+    height: 2.5rem;
+    position: fixed;
+    bottom: 0;
+    width: calc(100%);
+    display: flex;
+    padding: 0.5rem;
+    z-index: 999999999;
+    justify-content: space-between;
+    box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb;
+}
+
+#start-menu {
+    bottom: 3.75rem;
+    position: absolute;
+    background: #c0c0c0;
+    left: 0.25rem;
+    width: 24rem;
+    min-height: 3rem;
+    display: none;
+}
+#start-button-input:checked ~ #start-bar > #start-menu {
+    display: block;
+}
+#start-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#start-menu ul li label {
+    height: 4rem;
+    float: left;
+    cursor: pointer;
+    padding: 0 0.5rem 0 0.5rem;
+    margin: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: calc(100% - 3rem);
+}
+
+#start-menu > ul > li label:before {
+    width: 10px;
+    background: black;
+    content: '';
+    height: 1px;
+    position: absolute;
+    bottom: 20px;
+    left: 3rem;
+}
+#start-menu > ul > li label:first-of-type:before {
+    width: 14px;
+}
+
+#start-menu > ul > li label:hover:before {
+    background: white;
+}
+#start-menu ul li.line label {
+    box-shadow: 0 2px #808280, 0 4px white;
+}
+.line {
+    box-shadow: 0 2px #808280, 0 4px white;
+}
+#start-menu ul li img {
+    width: 2rem;
+    height: auto;
+    margin: 0 1rem 0 0;
+}
+#start-menu ul li label:hover {
+    background: #0c1b98;
+    color: white;
+    box-shadow: -8px 0 #0c1b98, 8px 0 #0c1b98;
+}
 
         </style>
     </head>
 <body>
-    <h1>Build a pixlpal</h1>
-    <div id="image-preview">
-        <img id="background-image" src="https://imagizer.imageshack.com/img923/7005/7rg4vl.png">
-        <img id="style-image">
-        <img id="body-image">
-        <img id="head-image">
-        <img id="eyes-image">
-        <button id="compile-button">Compile</button>
-    </div>
-    
-    <form id="punk-form">
-        <div class="tabs">
-            <ul data-tabs>
-                <li><a href="#backgrounds">Background</a></li>
-                <li><a href="#styles">Type</a></li>
-                <li><a href="#body">Clothing</a></li>
-                <li><a href="#head">Head</a></li>
-                <li><a href="#eyes">Eyes</a></li>
-            </ul>
+    <div id="toolbar" class="toolbar">
+        <div class="toolbar-start-menu">
+          <button class="start-button">
+            Start
+          </button>
+          
+          <div class="start-menu-wrapper">
+            <div class="start-menu-title">
+            
+            </div>
+            
+            <div class="start-menu">
+            </div>
+          </div>
         </div>
-        <div class="tab-content">
-            <div id="backgrounds">
-                <div class="form-group">
-                    <div class="category-grid" id="backgrounds-grid"></div>
-                </div>                
+        <div class="toolbar-separator"></div>
+     
+        <div class="toolbar-right">
+          <div class="time"><span class="hour"></span>4:20<span class="minutes"></span> PM</div>
+        </div>
+    </div>
+    <div class="desktop-icons">
+        <div class="desktop-icon my-computer" title="My Computer">
+            <img src="https://imagizer.imageshack.com/img922/9062/jpod6a.png">
+            <span>My Computer</span>
+        </div>
+        <div class="desktop-icon my-documents" title="My Documents">
+            <img src="https://imagizer.imageshack.com/img923/8678/qkFsVh.png">
+            <span>My Documents</span>
+        </div>
+        <div class="desktop-icon network" title="Network Neighborhood">
+            <img src="https://imagizer.imageshack.com/img922/697/ubSnAD.png">
+            <span>Pixlbuilder</span>
+        </div>
+        <div class="desktop-icon trash-empty" title="Recycle Bin">
+            <img src="https://imagizer.imageshack.com/img924/1802/wSeUA2.png">
+            <span>Recycle Bin</span>
+        </div>
+    </div>        
+    <form id="punk-form">
+        <div class="window" style="width: 500px;">
+            <div class="title-bar">
+              <div class="title-bar-text">Pixlbuilder</div>
             </div>
-            <div id="styles">
-                <div class="form-group">
-                    <div class="category-grid" id="styles-grid"></div>
+            <div id="image-preview-wrapper">
+                <div id="image-preview">
+                    <img id="background-image" src="https://imagizer.imageshack.com/img923/8831/qboiiP.png">
+                    <img id="style-image">
+                    <img id="body-image">
+                    <img id="head-image">
+                    <img id="eyes-image">
+                    <button id="compile-button">Compile</button>
                 </div>
-            </div>
-            <div id="body">
-                <div class="form-group">
-                    <div class="category-grid" id="body-grid"></div>
+            <div class="window-body">
+                <div id="initial-text">
+                    <p><br>Welcome to the pixlbuilder.<br><br><br>Below you can select different traits and build a Pixlpal that best represents you. This is just a fun experiment and requires you to inscribe the SVG file however the inscriptions are just a few dollars.<br><br><br><br></p>
                 </div>
+                <menu class="menu" role="tablist" data-tabs>
+                    <li role="tab" aria-selected="true"><a href="#backgrounds">Background</a></li>
+                    <li role="tab"><a href="#styles">Type</a></li>
+                    <li role="tab"><a href="#body">Clothing</a></li>
+                    <li role="tab"><a href="#head">Head</a></li>
+                    <li role="tab"><a href="#eyes">Eyes</a></li>
+                </menu>                
+                <div class="window" role="tabpanel">
+                    <div class="window-body">
+              <!-- Your tab content goes here -->
+              <div class="tab-content">
+                  <div id="backgrounds">
+                      <div class="form-group">
+                          <div class="category-grid" id="backgrounds-grid"></div>
+                      </div>                
+                  </div>
+                  <div id="styles">
+                      <div class="form-group">
+                          <div class="category-grid" id="styles-grid"></div>
+                      </div>
+                  </div>
+                  <div id="body">
+                      <div class="form-group">
+                          <div class="category-grid" id="body-grid"></div>
+                      </div>
+                  </div>
+                  <div id="head">
+                      <div class="form-group">
+                          <div class="category-grid" id="head-grid"></div>
+                      </div>
+                  </div>
+                  <div id="eyes">
+                      <div class="form-group">
+                          <div class="category-grid" id="eyes-grid"></div>
+                      </div>                                  
+                  </div>          
+              </div>
             </div>
-            <div id="head">
-                <div class="form-group">
-                    <div class="category-grid" id="head-grid"></div>
-                </div>
-            </div>
-            <div id="eyes">
-                <div class="form-group">
-                    <div class="category-grid" id="eyes-grid"></div>
-                </div>               
-        </div>         
+          </div>          
     </form>
+</form>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12.0.0/dist/js/tabby.polyfills.min.js"></script>
     <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+            document.querySelector('.taskbar-time').textContent = hours + ':' + minutes;
+    }
+
+setInterval(updateTime, 1000);
+
         var backgrounds = [
             { name: 'None', image: 'https://imagizer.imageshack.com/img923/8831/qboiiP.png' },
             { name: 'Orange', image: 'https://imagizer.imageshack.com/img923/3342/Ef1fo2.png' },
@@ -225,25 +446,33 @@
     var backgroundsDiv = document.getElementById('backgrounds-grid');
     backgroundsDiv.innerHTML = '';
 
+    if (!document.getElementById('backgrounds-text')) {
+        var textDiv = document.createElement('div');
+        textDiv.style.textAlign = 'center';
+        var textElement = document.createElement('p');
+        textElement.textContent = "Choose a background...";
+        textElement.className = 'instruction-text';
+        textElement.id = 'backgrounds-text';
+        textDiv.appendChild(textElement);
+
+        backgroundsDiv.parentNode.insertBefore(textDiv, backgroundsDiv);
+    }
+
     for (var i = 0; i < backgrounds.length; i++) {
-    var div = document.createElement('div');
-    div.className = 'category-option';
+        var div = document.createElement('div');
+        div.className = 'category-option';
 
-    var img = document.createElement('img');
-    img.src = backgrounds[i].image;
+        var img = document.createElement('img');
+        img.src = backgrounds[i].image;
 
-    // Add event listener to the image
-    img.addEventListener('click', function() {
-        // Get the compiler image element
-        var compilerImage = document.getElementById('background-image');
+        img.addEventListener('click', function() {
+            var compilerImage = document.getElementById('background-image');
+            compilerImage.src = this.src;
+        });
 
-        // Set the source of the compiler image to the source of the clicked image
-        compilerImage.src = this.src;
-    });
-
-    div.appendChild(img);
-    backgroundsDiv.appendChild(div);
-}
+        div.appendChild(img);
+        backgroundsDiv.appendChild(div);
+    }
 }
     
         var styles = [
@@ -260,6 +489,18 @@ function updateStyles() {
     var stylesDiv = document.getElementById('styles-grid');
     stylesDiv.innerHTML = '';
 
+    if (!document.getElementById('styles-text')) {
+        var textDiv = document.createElement('div');
+        textDiv.style.textAlign = 'center';
+        var textElement = document.createElement('p');
+        textElement.textContent = "Select your body type...";
+        textElement.className = 'instruction-text';
+        textElement.id = 'styles-text';
+        textDiv.appendChild(textElement);
+
+        stylesDiv.parentNode.insertBefore(textDiv, stylesDiv);
+    }
+
     for (var i = 0; i < styles.length; i++) {
         var div = document.createElement('div');
         div.className = 'category-option';
@@ -267,12 +508,8 @@ function updateStyles() {
         var img = document.createElement('img');
         img.src = styles[i].image;
 
-        // Add event listener to the image
         img.addEventListener('click', function() {
-            // Get the compiler image element
             var compilerImage = document.getElementById('style-image');
-
-            // Set the source of the compiler image to the source of the clicked image
             compilerImage.src = this.src;
         });
 
@@ -293,6 +530,18 @@ function updateBody() {
     var bodyDiv = document.getElementById('body-grid');
     bodyDiv.innerHTML = '';
 
+    if (!document.getElementById('body-text')) {
+        var textDiv = document.createElement('div');
+        textDiv.style.textAlign = 'center';
+        var textElement = document.createElement('p');
+        textElement.textContent = "Pick some apparel...";
+        textElement.className = 'instruction-text';
+        textElement.id = 'body-text';
+        textDiv.appendChild(textElement);
+
+        bodyDiv.parentNode.insertBefore(textDiv, bodyDiv);
+    }
+
     for (var i = 0; i < body.length; i++) {
         var div = document.createElement('div');
         div.className = 'category-option';
@@ -300,12 +549,8 @@ function updateBody() {
         var img = document.createElement('img');
         img.src = body[i].image;
 
-        // Add event listener to the image
         img.addEventListener('click', function() {
-            // Get the compiler image element
             var compilerImage = document.getElementById('body-image');
-
-            // Set the source of the compiler image to the source of the clicked image
             compilerImage.src = this.src;
         });
 
@@ -328,6 +573,18 @@ function updateHead() {
     var headDiv = document.getElementById('head-grid');
     headDiv.innerHTML = '';
 
+    if (!document.getElementById('head-text')) {
+        var textDiv = document.createElement('div');
+        textDiv.style.textAlign = 'center';
+        var textElement = document.createElement('p');
+        textElement.textContent = "Select some headwear...";
+        textElement.className = 'instruction-text';
+        textElement.id = 'head-text';
+        textDiv.appendChild(textElement);
+
+        headDiv.parentNode.insertBefore(textDiv, headDiv);
+    }
+
     for (var i = 0; i < head.length; i++) {
         var div = document.createElement('div');
         div.className = 'category-option';
@@ -335,12 +592,8 @@ function updateHead() {
         var img = document.createElement('img');
         img.src = head[i].image;
 
-        // Add event listener to the image
         img.addEventListener('click', function() {
-            // Get the compiler image element
             var compilerImage = document.getElementById('head-image');
-
-            // Set the source of the compiler image to the source of the clicked image
             compilerImage.src = this.src;
         });
 
@@ -362,6 +615,18 @@ function updateEyes() {
     var eyesDiv = document.getElementById('eyes-grid');
     eyesDiv.innerHTML = '';
 
+    if (!document.getElementById('eyes-text')) {
+        var textDiv = document.createElement('div');
+        textDiv.style.textAlign = 'center';
+        var textElement = document.createElement('p');
+        textElement.textContent = "Add some eyewear...";
+        textElement.className = 'instruction-text';
+        textElement.id = 'eyes-text';
+        textDiv.appendChild(textElement);
+
+        eyesDiv.parentNode.insertBefore(textDiv, eyesDiv);
+    }
+
     for (var i = 0; i < eyes.length; i++) {
         var div = document.createElement('div');
         div.className = 'category-option';
@@ -382,6 +647,8 @@ function updateEyes() {
         eyesDiv.appendChild(div);
     }
 }
+
+
 
 function compileSVG() {
     // Get the selected traits
@@ -423,8 +690,17 @@ window.addEventListener('DOMContentLoaded', function() {
     updateBody();
     updateHead();
 
+    // Hide all tab content
+    var tabContents = document.querySelectorAll('.tab-content > div');
+    tabContents.forEach(function(tabContent) {
+        tabContent.style.display = 'none';
+    });
+
+    // Show content for the first tab
+    document.querySelector('.tab-content > div').style.display = 'block';
+
     // Remove focus from all tabs
-    var tabLinks = document.querySelectorAll('.tabs a');
+    var tabLinks = document.querySelectorAll('.menu a');
     tabLinks.forEach(function(tabLink) {
         tabLink.blur();
     });
@@ -433,9 +709,10 @@ window.addEventListener('DOMContentLoaded', function() {
 var tabs = new Tabby('[data-tabs]');
 
 // Add event listener for tab switching
-var tabLinks = document.querySelectorAll('.tabs a');
+var tabLinks = document.querySelectorAll('.menu a');
 tabLinks.forEach(function(tabLink) {
     tabLink.addEventListener('click', function(event) {
+        // Prevent the default action
         event.preventDefault();
 
         // Remove active class from all tabs
