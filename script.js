@@ -99,5 +99,17 @@ tabLinks.forEach(function(tabLink) {
         if (this.getAttribute('href') === '#backgrounds') {
             updateBackgrounds();
         }
+        if (this.getAttribute('href') === '#styles') {
+            updateStyles();
+        }
+        if (this.getAttribute('href') === '#body') {
+            updateBody();
+                    }
+        if (this.getAttribute('href') === '#head') {
+            updateHead();
+                    }
+        if (this.getAttribute('href') === '#eyes') {
+            updateEyes();
+        }
     });
 });
