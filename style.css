@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    flex-direction: row; /* Change this from column to row */
+    align-items: flex-start; /* Align items to the top of the page */
+    justify-content: space-around; /* Add space around items */
+    height: 100vh;
+    margin: 0;
+    background: #000000;
+    font-family: 'Silkscreen', sans-serif;
+    color: rgb(0, 0, 0); /* Text color for body */
+    border: none;
+}
+
+#image-preview {
+    width: 480px;
+    height: 480px;
+    border: none;
+    background: #000000;
+    position: relative;
+    margin-right: 2em; /* Add some margin to the right of the image preview */
+}
+
+#punk-form {
+    width: 480px; /* Set a width for the form */
+    overflow-y: auto; /* Add a scrollbar if the content is too tall */
+    border: none;
+}
+
+/* Style the tab */
+.tabs {
+    overflow: hidden;
+    border-bottom: none;
+    background-color: #f1f1f1;
+    color: #ffffff;
+}
+  
+/* Style the buttons inside the tab */
+.tabs a {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    text-decoration: none;
+    color: #ffffff; /* Change this to the color you want for all tabs */
+}
+  
+/* Change background color of buttons on hover */
+.tabs a:hover {
+    background-color: #dddddd00;
+    color: #ffffff;
+}
+  
+/* Create an active/current tablink class */
+.tabs a.active {
+    color: rgb(255, 115, 0); /* Change this to the color you want for the active tab */
+    background-color: #ffffff; /* Add a background color to the active tab */
+
+}
