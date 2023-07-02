@@ -391,6 +391,43 @@ tabLinks.forEach(function(tabLink) {
         document.getElementById('placeholder-text').style.display = 'none';
     });
 });
-    </script>    
+        <button id="compile-button">Compile</button>
+    </script>
+
+    function compileSVG() {
+            // Get the selected traits
+            var backgroundImage = document.getElementById('background-image').src;
+            var styleImage = document.getElementById('style-image').src;
+            var bodyImage = document.getElementById('body-image').src;
+            var headImage = document.getElementById('head-image').src;
+            var eyesImage = document.getElementById('eyes-image').src;
+
+            // Create the SVG string
+            var svgString = '<svg width="24px" height="24px" xmlns="http://www.w3.org/2000/svg">\n';
+            svgString += '<image href="' + backgroundImage + '" />\n';
+            svgString += '<image href="' + styleImage + '" />\n';
+            svgString += '<image href="' + bodyImage + '" />\n';
+            svgString += '<image href="' + headImage + '" />\n';
+            svgString += '<image href="' + eyesImage + '" />\n';
+            svgString += '</svg>';
+
+            // Download the SVG string as a file
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(svgString));
+            element.setAttribute('download', 'output.svg');
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        // Add event listener to the compile button
+        document.getElementById('compile-button').addEventListener('click', compileSVG);
+    </script>
+</body>
+</html>
 </body>
 </html>
