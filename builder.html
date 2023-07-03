@@ -387,7 +387,7 @@
                     <li role="tab"><a href="#body">Clothing</a></li>
                     <li role="tab"><a href="#head">Head</a></li>
                     <li role="tab"><a href="#eyes">Eyes</a></li>
-                </menu>                
+                </menu>               
                 <div class="window" role="tabpanel">
                     <div class="window-body">
               <!-- Your tab content goes here -->
@@ -709,56 +709,58 @@ window.addEventListener('DOMContentLoaded', function() {
 var tabs = new Tabby('[data-tabs]');
 
 // Add event listener for tab switching
-var tabLinks = document.querySelectorAll('.menu a');
-tabLinks.forEach(function(tabLink) {
-    tabLink.addEventListener('click', function(event) {
-        // Prevent the default action
-        event.preventDefault();
+ var tabLinks = document.querySelectorAll('.menu a');
+    tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener('click', function(event) {
+            // Prevent the default action
+            event.preventDefault();
 
-        // Remove active class from all tabs
-        tabLinks.forEach(function(tabLink) {
-            tabLink.classList.remove('active');
+            // Remove active class from all tabs
+            tabLinks.forEach(function(tabLink) {
+                tabLink.classList.remove('active');
+                tabLink.parentNode.setAttribute('aria-selected', 'false');
+            });
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+            this.parentNode.setAttribute('aria-selected', 'true');
+
+            // Hide all tab content
+            var tabContents = document.querySelectorAll('.tab-content > div');
+            tabContents.forEach(function(tabContent) {
+                tabContent.style.display = 'none';
+            });
+
+            // Show content for clicked tab
+            var tabContent = document.querySelector(this.getAttribute('href'));
+            tabContent.style.display = 'block';
+
+            // If the "Backgrounds" tab is clicked, update the backgrounds
+            if (this.getAttribute('href') === '#backgrounds') {
+                updateBackgrounds();
+            }
+
+            // If the "Styles" tab is clicked, update the styles
+            if (this.getAttribute('href') === '#styles') {
+                updateStyles();
+            }
+
+            // If the "Body" tab is clicked, update the body images
+            if (this.getAttribute('href') === '#body') {
+                updateBody();
+            }
+
+            // If the "Head" tab is clicked, update the head images
+            if (this.getAttribute('href') === '#head') {
+                updateHead();
+            }
+
+            // If the "Eyes" tab is clicked, update the eyes images
+            if (this.getAttribute('href') === '#eyes') {
+                updateEyes();
+            }
         });
-
-        // Add active class to clicked tab
-        this.classList.add('active');
-
-        // Hide all tab content
-        var tabContents = document.querySelectorAll('.tab-content > div');
-        tabContents.forEach(function(tabContent) {
-            tabContent.style.display = 'none';
-        });
-
-        // Show content for clicked tab
-        var tabContent = document.querySelector(this.getAttribute('href'));
-        tabContent.style.display = 'block';
-
-        // If the "Backgrounds" tab is clicked, update the backgrounds
-        if (this.getAttribute('href') === '#backgrounds') {
-            updateBackgrounds();
-        }
-
-        // If the "Styles" tab is clicked, update the styles
-        if (this.getAttribute('href') === '#styles') {
-            updateStyles();
-        }
-
-        // If the "Body" tab is clicked, update the body images
-        if (this.getAttribute('href') === '#body') {
-            updateBody();
-        }
-
-        // If the "Head" tab is clicked, update the head images
-        if (this.getAttribute('href') === '#head') {
-            updateHead();
-        }
-
-        // If the "Eyes" tab is clicked, update the eyes images
-        if (this.getAttribute('href') === '#eyes') {
-            updateEyes();
-        }
     });
-});
     </script>    
 </body>
 </html>
