@@ -1,0 +1,319 @@
+@font-face {
+    font-family: 'Pixelated MS Sans Serif';
+    src: url('https://testingdd.s3.amazonaws.com/pixel_sans_serif/Pixel+Sans+Serif.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    color: rgb(255, 255, 255); /* Text color for form group */
+    border: none;
+}
+
+.hidden {
+    display: none;
+    border: none;
+}
+
+#initial-text {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#image-preview-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%; /* Make the wrapper div take up the full width of its parent */
+    padding-top: 20px;
+}
+
+#image-preview {
+    width: 384px;
+    height: 384px;
+    background: #000000;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#image-preview img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+    top: -50px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 0;
+    padding-top: 0px;
+    background: #008080 ;
+    font-family: 'Pixelated MS Sans Serif', sans-serif;
+    color: #121212; /* Text color for body */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.window {
+    z-index: 9999;
+    /* rest of your styles */
+}
+
+.desktop-icons {
+    position: absolute;
+    top: 70px;
+    left: 25px;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 60px);
+    grid-gap: 20px;
+    justify-content: start;
+    align-items: start;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.desktop-icon img {
+    width: 48px;
+    height: 48px;
+}
+
+.desktop-icon span {
+    font-size: 10px;
+}
+
+.desktop-icon:hover {
+    background-color: #0000FF;
+    color: #FFFFFF;
+}
+
+h1 {
+    color: rgb(255, 255, 255); /* Text color for header */
+    border: none;
+    padding-bottom: 20px;
+}
+select {
+    color: rgb(255, 255, 255); /* Text color for dropdown */
+    border: none;
+}
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+.category-option {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    border: none;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+.category-option img {
+    width: 100%;
+    height: 100%;
+    background: #5e5e5e60; /* Add this line */
+    border-radius: 5px;
+}
+.background-text {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.menu {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    height: 25px; /* Adjust as needed */
+    margin: 0 auto; /* Centers the tab bar */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.menu a {
+    color: #fff; /* Color of the text in all tabs */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.menu li {
+transition: all 0.3s ease; /* Adjust the duration and easing function as needed */
+}
+
+
+.menu li[aria-selected="true"] {
+background-color: #ccc; /* Change to your desired color */
+border: none; /* Change to your desired color */
+z-index: 1; /* Makes the selected tab appear in front */
+}
+
+#compile-button {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #2c2c2c;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Pixelated MS Sans Serif', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    width: 80px; /* Adjust to your desired width */
+    height: 30px; /* Adjust to your desired height */
+    position: absolute;
+    top: 10px; /* Adjust to move the button up or down */
+    left: 10px; /* Adjust to move the button left or right */
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#compile-button:hover,
+#compile-button:focus {
+    background-color: #24b300;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+#compile-button:hover {
+    transform: translateY(-1px);
+}
+
+#compile-button:active {
+    background-color: #24b300;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+}
+
+.instruction-text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Adjust as needed */
+    color: #000000;
+}
+
+#toolbar {
+    background: #c0c0c0;
+height: 2.5rem;
+position: fixed;
+bottom: 0;
+width: calc(100%);
+display: flex;
+padding: 0.5rem;
+z-index: 999999999;
+justify-content: space-between;
+box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb;
+}
+
+#start-menu {
+bottom: 3.75rem;
+position: absolute;
+background: #c0c0c0;
+left: 0.25rem;
+width: 24rem;
+min-height: 3rem;
+display: none;
+}
+#start-button-input:checked ~ #start-bar > #start-menu {
+display: block;
+}
+#start-menu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+#start-menu ul li label {
+height: 4rem;
+float: left;
+cursor: pointer;
+padding: 0 0.5rem 0 0.5rem;
+margin: 0 2.5rem;
+display: flex;
+align-items: center;
+position: relative;
+cursor: pointer;
+box-sizing: border-box;
+width: calc(100% - 3rem);
+}
+
+#start-menu > ul > li label:before {
+width: 10px;
+background: black;
+content: '';
+height: 1px;
+position: absolute;
+bottom: 20px;
+left: 3rem;
+}
+#start-menu > ul > li label:first-of-type:before {
+width: 14px;
+}
+
+#start-menu > ul > li label:hover:before {
+background: white;
+}
+#start-menu ul li.line label {
+box-shadow: 0 2px #808280, 0 4px white;
+}
+.line {
+box-shadow: 0 2px #808280, 0 4px white;
+}
+#start-menu ul li img {
+width: 2rem;
+height: auto;
+margin: 0 1rem 0 0;
+}
+#start-menu ul li label:hover {
+background: #0c1b98;
+color: white;
+box-shadow: -8px 0 #0c1b98, 8px 0 #0c1b98;
+}
