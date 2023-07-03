@@ -317,3 +317,9 @@ background: #0c1b98;
 color: white;
 box-shadow: -8px 0 #0c1b98, 8px 0 #0c1b98;
 }
+
+@media screen and (max-width: 600px) {
+    body {
+        overflow: hidden;
+    }
+}
