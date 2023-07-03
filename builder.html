@@ -49,9 +49,11 @@
     </div>        
     <form id="punk-form">
         <div class="window" style="width: 500px;">
+
             <div class="title-bar">
-              <div class="title-bar-text">Pixlbuilder</div>
+                <div class="title-bar-text">Pixlbuilder</div>
             </div>
+
             <div id="image-preview-wrapper">
                 <div id="image-preview">
                     <img id="background-image" src="https://imagizer.imageshack.com/img923/8831/qboiiP.png">
@@ -61,17 +63,19 @@
                     <img id="eyes-image">
                     <button id="compile-button">Compile</button>
                 </div>
+
             <div class="window-body">
                 <div id="initial-text">
                     <p><br><br>Welcome to the pixlbuilder.<br><br><br>Below you can select different traits and build a Pixlpal that best represents yourself. This is just a fun experiment however it does requires you to inscribe the SVG file that is compiled for you. The inscription fee should only cost a few dollars.<br><br><br><br></p>
-                </div>
-                <menu class="menu" role="tablist" data-tabs>
+                    <menu class="menu" role="tablist" data-tabs>
                     <li role="tab" aria-selected="true"><a href="#backgrounds">Background</a></li>
                     <li role="tab"><a href="#styles">Type</a></li>
                     <li role="tab"><a href="#body">Clothing</a></li>
                     <li role="tab"><a href="#head">Head</a></li>
                     <li role="tab"><a href="#eyes">Eyes</a></li>
-                </menu>               
+                </menu>
+            </div>
+                       
                 <div class="window" role="tabpanel">
                     <div class="window-body">
               <!-- Your tab content goes here -->
@@ -81,27 +85,32 @@
                           <div class="category-grid" id="backgrounds-grid"></div>
                       </div>                
                   </div>
+
                   <div id="styles">
                       <div class="form-group">
                           <div class="category-grid" id="styles-grid"></div>
                       </div>
                   </div>
+
                   <div id="body">
                       <div class="form-group">
                           <div class="category-grid" id="body-grid"></div>
                       </div>
                   </div>
+
                   <div id="head">
                       <div class="form-group">
                           <div class="category-grid" id="head-grid"></div>
                       </div>
                   </div>
+
                   <div id="eyes">
                       <div class="form-group">
                           <div class="category-grid" id="eyes-grid"></div>
                       </div>
-                      </div>                                               
-                  </div>          
+                  </div>
+
+                </div>          
               </div>
             </div>
           </div>          
@@ -322,41 +331,121 @@ function updateEyes() {
 }
 
 
+function showIframeWindow() {
+  // Check if the iframe window is already open
+  var existingIframe = document.getElementById('iframe-window');
+  if (existingIframe) {
+    existingIframe.style.display = 'block'; // Show the existing iframe window
+    return; // Exit the function to prevent opening multiple iframes
+}
+
+// Create the iframe window element
+var windowElement = document.createElement('div');
+windowElement.className = 'window';
+windowElement.id = 'iframe-window';
+windowElement.style.width = '825px';
+windowElement.style.height = '700px';
+windowElement.style.position = 'fixed';
+windowElement.style.top = '50%';
+windowElement.style.left = '50%';
+windowElement.style.transform = 'translate(-50%, -50%)';
+windowElement.style.zIndex = '1000';
+
+  // Create the title bar
+  var titleBar = document.createElement('div');
+  titleBar.className = 'title-bar';
+
+  var titleBarText = document.createElement('div');
+  titleBarText.className = 'title-bar-text';
+  titleBarText.textContent = 'Inscribe Your Pixlpal';
+
+  var closeButton = document.createElement('button');
+  closeButton.textContent = 'X';
+  closeButton.className = 'close-button';
+
+  // Append the elements to the title bar
+  titleBar.appendChild(titleBarText);
+  titleBar.appendChild(closeButton);
+  windowElement.appendChild(titleBar);
+
+closeButton.addEventListener('click', function() {
+    windowElement.style.display = 'none'; // Hide the iframe window when the close button is clicked
+  });
+
+// Open the iframe window when the compile button is clicked
+document.getElementById('compile-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    compileSVG();
+});
+
+    windowElement.appendChild(titleBar);
+
+    // Create the window body
+    var windowBody = document.createElement('div');
+    windowBody.className = 'window-body';
+
+    // Create the iframe
+    var iframe = document.createElement('iframe');
+    iframe.style.width = '800px'; // Make the iframe width 100% of the window
+    iframe.style.height = '640px'; // Make the iframe height 100% of the window
+    iframe.style.position = 'fixed';
+    iframe.style.border = 'none'; // Remove the iframe border
+    iframe.src = 'https://unisat.io/inscribe';
+
+    windowBody.appendChild(iframe);
+    windowElement.appendChild(windowBody);
+
+    // Append the window element to the document body
+    document.body.appendChild(windowElement);
+}
+
+// Event listener for the form submission
+document.getElementById('punk-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    showIframeWindow(); // Show the iframe window
+});
+
+// Open the iframe window when the compile button is clicked
+document.getElementById('compile-button').addEventListener('click', function() {
+});
+
 
 function compileSVG() {
-    // Confirmation dialog
-    if (!confirm("Are you sure you want to compile and download the SVG?")) {
-        return;
-    }
+  // Confirmation dialog
+  if (!confirm("Are you sure you want to compile and download the SVG?")) {
+    return; // Exit the function if the user cancels the confirmation
+  }
 
-    // Get the selected traits
-    var backgroundImage = document.getElementById('background-image').src.split('/').pop();
-    var styleImage = document.getElementById('style-image').src.split('/').pop();
-    var bodyImage = document.getElementById('body-image').src.split('/').pop();
-    var headImage = document.getElementById('head-image').src.split('/').pop();
-    var eyesImage = document.getElementById('eyes-image').src.split('/').pop();
+  // Get the selected traits
+  var backgroundImage = document.getElementById('background-image').src.split('/').pop();
+  var styleImage = document.getElementById('style-image').src.split('/').pop();
+  var bodyImage = document.getElementById('body-image').src.split('/').pop();
+  var headImage = document.getElementById('head-image').src.split('/').pop();
+  var eyesImage = document.getElementById('eyes-image').src.split('/').pop();
 
-    // Create the SVG string
-    var svgString = '<svg width="24px" height="24px" xmlns="http://www.w3.org/2000/svg">\n';
-    svgString += '<image href="' + backgroundImage + '" />\n';
-    svgString += '<image href="' + styleImage + '" />\n';
-    svgString += '<image href="' + bodyImage + '" />\n';
-    svgString += '<image href="' + headImage + '" />\n';
-    svgString += '<image href="' + eyesImage + '" />\n';
-    svgString += '</svg>';
+  // Create the SVG string
+  var svgString = '<svg width="24px" height="24px" xmlns="http://www.w3.org/2000/svg">\n';
+  svgString += '<image href="' + backgroundImage + '" />\n';
+  svgString += '<image href="' + styleImage + '" />\n';
+  svgString += '<image href="' + bodyImage + '" />\n';
+  svgString += '<image href="' + headImage + '" />\n';
+  svgString += '<image href="' + eyesImage + '" />\n';
+  svgString += '</svg>';
 
-    // Download the SVG string as a file
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(svgString));
-    element.setAttribute('download', 'output.svg');
+  // Download the SVG string as a file
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(svgString));
+  element.setAttribute('download', 'output.svg');
 
-    element.style.display = 'none';
-    document.body.appendChild(element);
+  element.style.display = 'none';
+  document.body.appendChild(element);
 
-    element.click();
+  element.click();
 
-    document.body.removeChild(element);
+  document.body.removeChild(element);
 }
+
+
     
 window.addEventListener('DOMContentLoaded', function() {
     updateBackgrounds();
@@ -381,6 +470,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('compile-button').addEventListener('click', compileSVG);
 
+    // Add event listener to the form submission
+    document.getElementById('punk-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+    });
 });
     
 var tabs = new Tabby('[data-tabs]');
@@ -441,6 +534,4 @@ var tabs = new Tabby('[data-tabs]');
     });
     </script>
     </body>
-    </html>    
-</body>
-</html>
+    </html>
