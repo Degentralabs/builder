@@ -69,6 +69,13 @@ strong{
     min-height: 200px;
 }
 
+.start-menu-link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+}
+
 .toolbar-right {
     margin: 2px 3px;
     height: 29px;
@@ -118,10 +125,12 @@ strong{
 }
 
 .window-toolbar{
-    background: #f5550b;
+    position: relative;
+    background: #0b8cf5;
     color: #fff;
     padding: 4px;
     font-weight: bold;
+    height: 26px;
 }
 
 .window-buttons{
@@ -143,6 +152,9 @@ strong{
 
 .window-button.close{
     background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .window-button.help{
@@ -250,6 +262,14 @@ option:first-child{
 p::first-letter{
     text-decoration: underline;
 }
+
+.window.active {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* other styles... */
+}
+
 
 .window-actions{
     margin-top: 10px;
