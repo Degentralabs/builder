@@ -238,7 +238,7 @@ function initializeDraggable(element) {
     newWindow.innerHTML = `
     <div class="window-toolbar" style="display: flex; justify-content: space-between; align-items: center;">
         <div class="window-title">Compiled Code</div>
-        <button class="window-button close button custom-close-button" id="close-button" style="width: 5px; height: 20px; padding: 0;"></button>
+        <button class="window-button close button custom-close-button" id="close-button"></button>
     </div>
     <div class="window-content" style="padding: 20px;">
         <textarea id="svg-code-textarea" style="width: 100%; height: 80%; padding: 10px;">${compiledCode}</textarea>
