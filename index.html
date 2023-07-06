@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/98.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div id="desktop">
+        <div class="desktop-icons">
+            <div class="desktop-icon pixlbuilder" id="pixlbuilder-icon">
+            Pixlbuilder
+          </div>
+      
+          <div class="desktop-icon documents" id="documents-icon">
+            Documents
+          </div>
+        </div>
+
+        <div class="window active" id="pixlbuilder-window">
+            <div class="window-toolbar" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    
+                    <div class="window-title">Pixlbuilder</div>
+                    
+                    <div class="window-buttons">
+                        <button class="window-button close"></button>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="window-content">
+                <div class="centered-image-wrapper">
+                    <img id="centered-image" class="centered-image" data-tab="none" src="images/placeholder.png" alt="Placeholder">
+                    <img id="background-image" class="centered-image" data-tab="background" src="images/clothing/none.png" alt="Background">
+                    <img id="base-image" class="centered-image" data-tab="base" src="images/clothing/none.png" alt="Base">
+                    <img id="clothing-image" class="centered-image" data-tab="clothing" src="images/clothing/none.png" alt="Clothing">
+                    <img id="headwear-image" class="centered-image" data-tab="headwear" src="images/clothing/none.png" alt="Headwear">
+                    <img id="eyewear-image" class="centered-image" data-tab="eyewear" src="images/clothing/none.png" alt="Eyewear">
+                  </div>
+            </div>
+
+
+            <div class="window-wrapper">
+                <div class="window-tabs">
+                    <button class="tabs-button active" data-tab="how-to">How To</button>
+                    <button class="tabs-button" data-tab="background">Background</button>
+                    <button class="tabs-button" data-tab="base">Base</button>
+                    <button class="tabs-button" data-tab="clothing">Clothing</button>
+                    <button class="tabs-button" data-tab="headwear">Headwear</button>
+                    <button class="tabs-button" data-tab="eyewear">Eyewear</button>
+                </div>
+                <div class="tab-content" id="how-to">
+                    <form>
+                        <fieldset>
+                            <legend>How It Works</legend>
+
+                            <div class="window-hero">
+                                <div class="window-hero-monitror">
+                                    <!-- TO DO - Monitor illustration -->
+                                </div>
+                            </div>
+
+                            <p><strong>1. Build Your Pixlpal</strong><br>We created a fun little builder for you to create your own pfp. Just select different traits from the category tabs above until your happy with your pal. You can see a visual representation of the pfp before inscribing in the image container above.<br><br><strong>2. Compile Your Traits</strong><br>This is where the magic of recursion comes in. Each trait represents a unique identifier which allows you to piece together your ordinal using an SVG file. Once you are finished building your Pixlpal you can press the "compile" button on the bottom right. This will open a new window where you can see the SVG code that has been created and download it. You will need to download this SVG file in order to inscribe (mint) your ordinal.<br><br><strong>3. Inscribe Your Ordinal</strong><br>Now that you have your SVG file you are ready to inscribe. This part is simple, just click on the "inscribe" button located below the SVG string that is generated for you and then drag that file into the upload field in unisat. This page will load on the page you need to upload the file to. You will need to pay a small fee (only a few $$) to inscribe and then you are all done. You should see the ordinal in your wallet after a short period of time.</p>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-content" id="background" style="display: none;">
+                    <form>
+                        <fieldset>
+                            <legend>Choose A Background</legend>
+
+                            <div class="image-grid">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/8831/qboiiP.png" alt="None">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/3342/Ef1fo2.png" alt="Orange">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/6237/cFZTzY.png" alt="Blue">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-content" id="base" style="display: none;">
+                    <form>
+                        <fieldset>
+                            <legend>Choose A Base</legend>
+
+                            <div class="image-grid">
+                                <div class="tab-image-container">
+                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
+                                    <div class="x-overlay">
+                                    </div>
+                                  </div>
+                                <img class="grid-image tab-image" src="images/base/alien.png" alt="Alien">
+                                <img class="grid-image tab-image" src="images/base/ape.png" alt="Ape">
+                                <img class="grid-image tab-image" src="images/base/bear.png" alt="Bear">
+                                <img class="grid-image tab-image" src="images/base/kaiju.png" alt="Kaiju">
+                                <img class="grid-image tab-image" src="images/base/pepe.png" alt="Pepe">
+                                <img class="grid-image tab-image" src="images/base/skelly.png" alt="Skeleton">
+                                <img class="grid-image tab-image" src="images/base/zombie.png" alt="Zombie">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-content" id="clothing" style="display: none;">
+                    <form>
+                        <fieldset>
+                            <legend>Choose Some Clothing</legend>
+
+                            <div class="image-grid">
+                                <div class="tab-image-container">
+                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
+                                    <div class="x-overlay">
+                                    </div>
+                                  </div>
+                                <img class="grid-image tab-image" src="images/clothing/apron.png" alt="Apron">
+                                <img class="grid-image tab-image" src="images/clothing/barca.png" alt="Barca">
+                                <img class="grid-image tab-image" src="images/clothing/black jacket.png" alt="Black Jacket">
+                                <img class="grid-image tab-image" src="images/clothing/black suit.png" alt="Black Blazer">
+                                <img class="grid-image tab-image" src="images/clothing/blue jacket.png" alt="Blue Jacket">
+                                <img class="grid-image tab-image" src="images/clothing/blue sandlot.png" alt="Blue Sandlot">
+                                <img class="grid-image tab-image" src="images/clothing/blue stripes.png" alt="Blue Stripes">
+                                <img class="grid-image tab-image" src="images/clothing/blue varsity.png" alt="Blue Varsity">
+                                <img class="grid-image tab-image" src="images/clothing/brazil.png" alt="Brazil">
+                                <img class="grid-image tab-image" src="images/clothing/bulls.png" alt="Bulls">
+                                <img class="grid-image tab-image" src="images/clothing/checkered.png" alt="Checkered">
+                                <img class="grid-image tab-image" src="images/clothing/chef.png" alt="Chef">
+                                <img class="grid-image tab-image" src="images/clothing/chiefs.png" alt="Chiefs">
+                                <img class="grid-image tab-image" src="images/clothing/country club.png" alt="Country Club">
+                                <img class="grid-image tab-image" src="images/clothing/devils.png" alt="Devils">
+                                <img class="grid-image tab-image" src="images/clothing/flannel.png" alt="Flannel">
+                                <img class="grid-image tab-image" src="images/clothing/giants.png" alt="Giants">
+                                <img class="grid-image tab-image" src="images/clothing/goat.png" alt="Goat">
+                                <img class="grid-image tab-image" src="images/clothing/green sweater.png" alt="Green Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/grey blazer.png" alt="Grey Blazer">
+                                <img class="grid-image tab-image" src="images/clothing/grey varsity.png" alt="Grey Varsity">
+                                <img class="grid-image tab-image" src="images/clothing/hipster.png" alt="Hipster">
+                                <img class="grid-image tab-image" src="images/clothing/hype.png" alt="Hype">
+                                <img class="grid-image tab-image" src="images/clothing/kamono.png" alt="Kamono">
+                                <img class="grid-image tab-image" src="images/clothing/knicks.png" alt="Knicks">
+                                <img class="grid-image tab-image" src="images/clothing/lakeshow.png" alt="Lakeshow">
+                                <img class="grid-image tab-image" src="images/clothing/moontee.png" alt="Moon">
+                                <img class="grid-image tab-image" src="images/clothing/niners.png" alt="Niners">
+                                <img class="grid-image tab-image" src="images/clothing/ocean sweater.png" alt="Ocean Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/overalls.png" alt="Overalls">
+                                <img class="grid-image tab-image" src="images/clothing/pajamas.png" alt="Pajamas">
+                                <img class="grid-image tab-image" src="images/clothing/paris.png" alt="Paris">
+                                <img class="grid-image tab-image" src="images/clothing/pats.png" alt="Pats">
+                                <img class="grid-image tab-image" src="images/clothing/Peace Sweater.png" alt="Peace Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/pepetee.png" alt="Pepe Tee">
+                                <img class="grid-image tab-image" src="images/clothing/pirate.png" alt="Pirate">
+                                <img class="grid-image tab-image" src="images/clothing/pixlburry sweater.png" alt="Pixlburry Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/pucci.png" alt="Pucci">
+                                <img class="grid-image tab-image" src="images/clothing/red jacket.png" alt="Red Jacket">
+                                <img class="grid-image tab-image" src="images/clothing/red rugby.png" alt="Red Rugby">
+                                <img class="grid-image tab-image" src="images/clothing/red sandlot.png" alt="Red Sandlot">
+                                <img class="grid-image tab-image" src="images/clothing/red stripes.png" alt="Red Stripes">
+                                <img class="grid-image tab-image" src="images/clothing/red sweater.png" alt="Red Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/red varsity.png" alt="Red Varsity">
+                                <img class="grid-image tab-image" src="images/clothing/red.png" alt="Red Tee">
+                                <img class="grid-image tab-image" src="images/clothing/referee.png" alt="Referee">
+                                <img class="grid-image tab-image" src="images/clothing/sailor.png" alt="Sailor">
+                                <img class="grid-image tab-image" src="images/clothing/scientist.png" alt="Scientist">
+                                <img class="grid-image tab-image" src="images/clothing/service.png" alt="Service">
+                                <img class="grid-image tab-image" src="images/clothing/sixers.png" alt="Sixers">
+                                <img class="grid-image tab-image" src="images/clothing/skellytee.png" alt="Skelly Tee">
+                                <img class="grid-image tab-image" src="images/clothing/smiley.png" alt="Smiley">
+                                <img class="grid-image tab-image" src="images/clothing/stark.png" alt="Stark">
+                                <img class="grid-image tab-image" src="images/clothing/suspenders.png" alt="Suspenders">
+                                <img class="grid-image tab-image" src="images/clothing/track jacket.png" alt="Track Jacket">
+                                <img class="grid-image tab-image" src="images/clothing/trainer.png" alt="Trainer">
+                                <img class="grid-image tab-image" src="images/clothing/trippy sweater.png" alt="Trippy Sweater">
+                                <img class="grid-image tab-image" src="images/clothing/tuxedo.png" alt="Tuxedo">
+                                <img class="grid-image tab-image" src="images/clothing/verified.png" alt="Verified">
+                                <img class="grid-image tab-image" src="images/clothing/white.png" alt="White">
+                                <img class="grid-image tab-image" src="images/clothing/work shirt.png" alt="Work Shirt">
+                                <img class="grid-image tab-image" src="images/clothing/yellow rugby.png" alt="Yellow Rugby">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-content" id="headwear" style="display: none;">
+                    <form>
+                        <fieldset>
+                            <legend>Choose Some Headwear</legend>
+
+                            <div class="image-grid">
+                                <div class="tab-image-container">
+                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
+                                    <div class="x-overlay">
+                                    </div>
+                                  </div>
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/2660/NZm0kX.png" alt="Beanie">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/1029/zk8LLV.png" alt="Backwards Cap">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/4083/FNsNyH.png" alt="Cowboy Hat">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/3924/r4j9c3.png" alt="Crown">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/2888/k027Y3.png" alt="Wizard Hat">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/4224/HQKpIG.png" alt="Durag">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/5818/eaXh69.png" alt="Headphones">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-content" id="eyewear" style="display: none;">
+                    <form>
+                        <fieldset>
+                            <legend>Choose Some Eyewear</legend>
+
+                            <div class="image-grid">
+                                <div class="tab-image-container">
+                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
+                                    <div class="x-overlay">
+                                    </div>
+                                  </div>
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/102/XqT38a.png" alt="Nouns Glasses">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/2424/zKRU7o.png" alt="Bitcoin Maxi">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/2806/DRYdmQ.png" alt="Purple Mask">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/8213/84jZRc.png" alt="6D Glasses">
+                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/6562/3e3IrY.png" alt="VR Headset">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="window-actions">
+                    <button class="window-action-button" id="compile-button">Compile</button>
+                    <button class="window-action-button" id="clear-button">Clear</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="window" id="doc-window">
+            <div class="window-toolbar">
+                <div class="window-title">Doc Window</div>
+                <div class="window-buttons">
+                    <button class="window-button close"></button>
+                    <button class="window-button help"></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <textarea id="svg-code-textarea" style="width: 100%; height: 90%; padding: 10px;"></textarea>
+            </div>
+        <div id="iframe-container">
+            <iframe id="compiled-code-iframe" frameborder="0" width="100%" height="100%" src="" style="visibility: hidden;"></iframe>
+          </div>          
+</div>
+
+        <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
+        <script src="script.js"></script>
+        <div id="toolbar">
+            <div class="toolbar-start-menu">
+                <button class="start-button" id="start-button">
+                    Start
+                </button>
+
+                <div class="start-menu-wrapper" id="start-menu-wrapper">
+                    <div class="start-menu-title">
+                        <span><strong>Windows</strong>98</span>
+                    </div>
+                    <div class="start-menu">
+                        <button class="start-menu-link" id="shutdown-button">Shut down</button>
+                        <button class="start-menu-link" id="restart-button">Restart</button>
+                        <button class="start-menu-link" id="logoff-button">Log off</button>
+                        <button class="start-menu-link" id="settings-button">Settings</button>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar-right">
+                <div class="time"><span class="hour"></span>:<span class="minutes"></span> AM</div>
+            </div>
+        </div>
+    </body>
+</html>
