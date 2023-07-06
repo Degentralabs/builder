@@ -234,24 +234,30 @@
             </div>
             
         </div>
-        <div class="window" id="doc-window">
+        <div class="window" id="doc-window" style="width: 80%; height: 30%;">
             <div class="window-toolbar">
-                <div class="window-title">Doc Window</div>
+                <div class="window-title">Additional Info</div>
                 <div class="window-buttons">
                     <button class="window-button close"></button>
-                    <button class="window-button help"></button>
+                    
                 </div>
+                
             </div>
-            <div class="window-content">
-                <textarea id="svg-code-textarea" style="width: 100%; height: 90%; padding: 10px;"></textarea>
+            <div class="window-content" style="display: flex; flex-direction: column; align-items: center;">
+                <textarea id="svg-code-textarea" style="width: 100%; height: 53%; padding: 10px;">Hey pals..
+                    
+First things first I made this strictly for fun.. I needed to test a few things and got a bit carried away. Sure there are plenty of templates for desktops similar to this out there but I made this from scratch the hard way for some unknown reason. Anyway the point of this website is to educate myself and others on how recursive inscriptions work. It's really not all that complicated and it's a pretty cool standard to mess with. I'm not sure how to feel about recursion but it does allow us to do some interesting things on Bitcoin so why not test it out. This experiment was not thrown together overnight, a good amount of time went into this. Ultimately this experiment will become my genesis collection and be indexed once the initial set is all gone. I don't plan on advertising this or shilling it anywhere because I want people who support me or support builders to get involved. Lastly to those thinking of "frontrunning" this go for it I don't mind and will gladly index your creations if they are original and are submitted before the cutoff.</textarea>
+                <button id="twitter" style="width: 150px; padding: 10px; margin-top: 10px;" onclick="window.open('https://twitter.com/Pixltoshi', '_blank')">Twitter</button>
             </div>
-        <div id="iframe-container">
-            <iframe id="compiled-code-iframe" frameborder="0" width="100%" height="100%" src="" style="visibility: hidden;"></iframe>
-          </div>          
-</div>
+            <div id="iframe-container">
+                <iframe id="compiled-code-iframe" frameborder="0" width="100%" height="100%" src="" style="visibility: hidden;"></iframe>
+            </div>          
+            </div>
+            
 
         <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
         <script src="script.js"></script>
+        
         <div id="toolbar">
             <div class="toolbar-start-menu">
                 <button class="start-button" id="start-button">
@@ -260,7 +266,7 @@
 
                 <div class="start-menu-wrapper" id="start-menu-wrapper">
                     <div class="start-menu-title">
-                        <span><strong>Windows</strong>98</span>
+
                     </div>
                     <div class="start-menu">
                         <button class="start-menu-link" id="shutdown-button">Shut down</button>
