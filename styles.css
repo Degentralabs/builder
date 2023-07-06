@@ -1,369 +1,340 @@
-@font-face {
-    font-family: 'Pixelated MS Sans Serif';
-    src: url('https://testingdd.s3.amazonaws.com/pixel_sans_serif/Pixel+Sans+Serif.ttf') format('truetype');
-}
-
-* {
-    margin: 0;
-    padding: 0;
+*{
     box-sizing: border-box;
 }
 
-.form-group {
-    margin-bottom: 1em;
-    color: rgb(255, 255, 255); /* Text color for form group */
-    border: none;
-}
-
-.hidden {
-    display: none;
-    border: none;
-}
-
-#initial-text {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#image-preview-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%; /* Make the wrapper div take up the full width of its parent */
-    padding-top: 20px;
-}
-
-#image-preview {
-    width: 384px;
-    height: 384px;
-    background: #000000;
-    position: relative;
+body{
     margin: 0;
-    padding: 0;
-    padding-bottom: 0px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    font-family: 'MS Sans Serif';
+    letter-spacing: 0.001em;
+    font-size: 14px;
+    font-smooth: none;
 }
-#image-preview img {
-    position: absolute;
+
+strong{
+    font-weight: bold;
+}
+
+@keyframes loading { 
+    0%{background-position:0% 51%}
+    100%{background-position:-200% 51%}
+}
+
+#desktop{
+    background: teal;
     width: 100%;
-    height: 100%;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-body {
-    position: relative;
-    top: -50px;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
-    margin-top: 0;
-    padding-top: 0px;
-    background: #008080 ;
-    font-family: 'Pixelated MS Sans Serif', sans-serif;
-    color: #121212; /* Text color for body */
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
 }
 
-.window {
-    z-index: 9999;
-    /* rest of your styles */
-}
 
-.desktop-icons {
-    position: absolute;
-    top: 70px;
-    left: 25px;
-    display: grid;
-    grid-template-rows: repeat(auto-fill, 60px);
-    grid-gap: 20px;
-    justify-content: start;
-    align-items: start;
-}
-
-.desktop-icon {
+#toolbar {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 60px;
+    background: #c0c0c0;
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid #fff;
+}
+
+.toolbar-start-menu .start-button {
+    background: url(https://win98icons.alexmeub.com/icons/png/windows-0.png) no-repeat 2px center / 24px;
+    padding-left: 28px;
+    padding-right: 5px;
+    height: 29px;
+    margin: 2px 3px;
+    font-weight: bold;
+    border: 2px solid #7c7c7c;
+    border-top-color: #fff;
+    border-left-color: #fff;
+}
+
+.start-button:hover {
+    background-color: #a0a0a0; /* Darkened version of #c0c0c0 */
+}
+
+.start-menu-wrapper {
+    display: none;
+    border: 2px solid #7c7c7c;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    background: #c0c0c0;
+    position: fixed;
+    left: 2px;
+    bottom: 33px;
+    width: 190px;
+    min-height: 200px;
+}
+
+.toolbar-right {
+    margin: 2px 3px;
+    height: 29px;
+    border: 2px solid #7c7c7c;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+}
+
+.toolbar-right .time {
+    padding: 6px 10px;
+}
+
+.desktop-icons .desktop-icon {
+    width: 115px;
+    height: 100px;
+    color: #fff;
     text-align: center;
-    cursor: pointer;
+    background: no-repeat center top;
+    padding-top: 55px;
+    margin: 10px;
 }
 
-.desktop-icon img {
-    width: 48px;
-    height: 48px;
-}
-
-.desktop-icon span {
-    font-size: 10px;
-}
 
 .desktop-icon:hover {
     background-color: #0000FF;
     color: #FFFFFF;
+  }
+
+.desktop-icons .desktop-icon.pixlbuilder {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/computer_explorer-5.png);
 }
 
-h1 {
-    color: rgb(255, 255, 255); /* Text color for header */
-    border: none;
-    padding-bottom: 20px;
-}
-select {
-    color: rgb(255, 255, 255); /* Text color for dropdown */
-    border: none;
-}
-.category-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    color: rgb(0, 0, 0);
-    border: none;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-}
-.category-option {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    border: none;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-}
-.category-option img {
-    width: 100%;
-    height: 100%;
-    background: #5e5e5e60; /* Add this line */
-    border-radius: 5px;
-}
-.background-text {
-    font-size: 14px;
-    color: rgb(255, 255, 255);
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
+.desktop-icons .desktop-icon.documents {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png);
 }
 
-.menu {
-    position: relative;
-    width: 100%; /* Adjust as needed */
-    height: 25px; /* Adjust as needed */
-    margin: 0 auto; /* Centers the tab bar */
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.menu a {
-    color: #fff; /* Color of the text in all tabs */
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.menu li {
-transition: all 0.3s ease; /* Adjust the duration and easing function as needed */
-}
-
-
-.menu li[aria-selected="true"] {
-background-color: #ccc; /* Change to your desired color */
-border: none; /* Change to your desired color */
-z-index: 1; /* Makes the selected tab appear in front */
-}
-
-#compile-button {
-    align-items: center;
-    background-clip: padding-box;
-    background-color: #2c2c2c;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: 'Pixelated MS Sans Serif', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    width: 80px; /* Adjust to your desired width */
-    height: 30px; /* Adjust to your desired height */
-    position: absolute;
-    top: 10px; /* Adjust to move the button up or down */
-    left: 10px; /* Adjust to move the button left or right */
-    text-decoration: none;
-    transition: all 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-#compile-button:hover,
-#compile-button:focus {
-    background-color: #24b300;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
-
-#compile-button:hover {
-    transform: translateY(-1px);
-}
-
-#compile-button:active {
-    background-color: #24b300;
-    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-    transform: translateY(0);
-}
-
-.instruction-text {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px; /* Adjust as needed */
-    color: #000000;
-}
-
-#toolbar {
+.window{
+    border: 2px solid #7c7c7c;
+    border-top-color: #fff;
+    border-bottom-color: #131313;
+    border-left-color: #fff;
     background: #c0c0c0;
-height: 2.5rem;
-position: fixed;
-bottom: 0;
-width: calc(100%);
-display: flex;
-padding: 0.5rem;
-z-index: 999999999;
-justify-content: space-between;
-box-shadow: 0 -2px #fffdfc, 0 -4px #cce9eb;
-}
-
-#start-menu {
-bottom: 3.75rem;
-position: absolute;
-background: #c0c0c0;
-left: 0.25rem;
-width: 24rem;
-min-height: 3rem;
-display: none;
-}
-#start-button-input:checked ~ #start-bar > #start-menu {
-display: block;
-}
-#start-menu ul {
-list-style: none;
-padding: 0;
-margin: 0;
-}
-#start-menu ul li label {
-height: 4rem;
-float: left;
-cursor: pointer;
-padding: 0 0.5rem 0 0.5rem;
-margin: 0 2.5rem;
-display: flex;
-align-items: center;
-position: relative;
-cursor: pointer;
-box-sizing: border-box;
-width: calc(100% - 3rem);
-}
-
-#start-menu > ul > li label:before {
-width: 10px;
-background: black;
-content: '';
-height: 1px;
-position: absolute;
-bottom: 20px;
-left: 3rem;
-}
-#start-menu > ul > li label:first-of-type:before {
-width: 14px;
-}
-
-#start-menu > ul > li label:hover:before {
-background: white;
-}
-#start-menu ul li.line label {
-box-shadow: 0 2px #808280, 0 4px white;
-}
-.line {
-box-shadow: 0 2px #808280, 0 4px white;
-}
-#start-menu ul li img {
-width: 2rem;
-height: auto;
-margin: 0 1rem 0 0;
-}
-#start-menu ul li label:hover {
-background: #0c1b98;
-color: white;
-box-shadow: -8px 0 #0c1b98, 8px 0 #0c1b98;
-}
-
-.iframe-window {
-    width: 825px;
-    height: 660px;
+    width: 90%;
+    max-width: 500px;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 2px solid #000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    resize: both;
 }
 
-.iframe-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #c0c0c0;
-    padding: 5px;
+.window-toolbar{
+    background: #f5550b;
+    color: #fff;
+    padding: 4px;
     font-weight: bold;
 }
 
-.iframe-content {
-    padding: 10px;
+.window-buttons{
+    position: absolute;
+    right: 2px;
+    top: 2px;
 }
 
-.close-button {
-    background: #c0c0c0;
-    border: none;
-    font-size: 13px;
-    padding: 0;
-    width: 20px; /* Adjust the width as desired */
-    height: 20px; /* Adjust the height as desired */
-    cursor: pointer;
-    color: #000000;
+.window-button{
+    background: no-repeat center #ccc;
+    border: 2px solid #7c7c7c;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    height: 17px;
+    width: 17px;
     float: right;
+    margin-left: 2px;
 }
 
-.title-bar {
+.window-button.close{
+    background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
+}
+
+.window-button.help{
+    background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
+}
+
+.centered-image-wrapper {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    margin: 0 auto;
+}
+
+.centered-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.window-tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tabs-button {
+    flex-grow: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000 #000 #c0c0c0;
+    padding: 2px 4px;
+    text-align: center;
+    background: #c0c0c0;
+    margin-right: -1px;
+}
+
+.tabs-button:first-child {
+    margin-left: -1px;
+}
+
+.tabs-button.active {
+    border-color: #c0c0c0 #000 #000;
+    background: #e0e0e0;
+}
+
+.tab-content.active {
+    border: 1px solid #7c7c7c;
+    padding: 10px;
+    background-color: #c0c0c0;
+}
+
+
+.window-content {
+    height: 390px; /* Set your desired height */
+    overflow-y: auto;
+    padding: 10px;
+    padding-bottom: 20px; /* Adjust the bottom padding as needed */
+  }
+  
+  .window-tabs {
+    height: 50px; /* Set your desired height */
     display: flex;
     align-items: center;
-    padding: 8px;
-    background-color: #333;
-    color: #fff;
+    overflow-x: auto;
+    padding: 10px;
+    padding-bottom: 10px; /* Adjust the bottom padding as needed */
+  }
+
+  .window-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+fieldset{
+    border: 1px solid #7c7c7c;
+    padding: 10px;
+    position: relative;
 }
 
-.title-bar-text {
-    float: left;
+
+
+legend{
+    padding: 0 3px;
+    background: #c0c0c0;
+}
+
+select{
+    width: 100%;
+    margin: 15px 0;
+}
+
+option{
+    background: url(https://win98icons.alexmeub.com/icons/png/paint_file-1.png) no-repeat 2px 2px;
+    background-size: auto 14px;
+    padding: 2px 3px 0 18px;
+    vertical-align: middle;
+}
+
+option:first-child{
+    background-image: url(https://win98icons.alexmeub.com/icons/png/no2-1.png);
+}
+
+p::first-letter{
+    text-decoration: underline;
+}
+
+.window-actions{
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.window-action-button{
+    border: 1px solid #131313;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    background: #c0c0c0;
+    width: 75px;
+    text-align: center;
+    padding: 5px 0;
+    float: right;
+    margin-left: 5px;
+}
+
+.category-option {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.category-option img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-gap: 10px; /* adjust as needed */
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.image-grid img {
+    width: 50px;
+    height: 50px;
+}
+
+.grid-image.selected {
+    border: 2px solid rgb(255, 102, 0); /* or any other style you prefer */
+}
+
+.tab-image-container {
+    position: relative;
+    display: inline-block;
   }
+  
+  .tab-image-container::after {
+    content: "X";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    pointer-events: none; /* This ensures the pseudo-element doesn't block the image from being selectable */
+  }
+
+  #iframe-container {
+    display: none; /* Set the initial display to none */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Set a high z-index to ensure it appears above other elements */
+  }
+  
+  #compiled-code-iframe {
+    display: block;
+    visibility: visible; /* Set the visibility to visible */
+    background-color: #fff; /* Set a background color if needed */
+  }
+
+  .custom-close-button {
+    width: 5px !important;
+    height: 20px !important;
+    padding: 0 !important;
+}
+
+#doc-window {
+    display: none;
+}
