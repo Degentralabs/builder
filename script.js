@@ -6,7 +6,6 @@ var inscribeButton;
 window.onload = function() {
     inscribeButton = document.getElementById('inscribe-button');
     initializeDraggableWindow();
-    centerWindow();
     initializeStartMenu();
     initializeTabButtons();
     initializeActionButtons();
@@ -47,11 +46,15 @@ function initializeDraggableWindow() {
 
 
 function centerWindow() {
-  var windowElement = document.querySelector('.window');
-  windowElement.style.top = '50%';
-  windowElement.style.left = '50%';
-  windowElement.style.transform = 'translate(-50%, -50%)';
-}
+    var windowElement = document.querySelector('.window');
+    setTimeout(function() {
+      var windowHeight = windowElement.offsetHeight;
+      var windowWidth = windowElement.offsetWidth;
+  
+      windowElement.style.top = `calc(50% - ${windowHeight / 2}px)`;
+      windowElement.style.left = `calc(50% - ${windowWidth / 2}px)`;
+    }, 0);
+  }  
 
 function initializeStartMenu() {
   document.getElementById('start-menu-wrapper').style.display = 'none';
@@ -179,8 +182,6 @@ function initializeDraggable(element) {
     // Initialize Draggabilly for the initial window
     var initialWindow = document.querySelector('.window');
     initializeDraggable(initialWindow);
-  
-    centerWindow();
     initializeStartMenu();
     initializeTabButtons();
     initializeActionButtons();
@@ -354,6 +355,7 @@ setInterval(function() {
 }, 1000);
 
 document.addEventListener('DOMContentLoaded', function() {
+    centerWindow();
     document.querySelector('#pixlbuilder-window .close').addEventListener('click', function() {
         // Get the Pixlbuilder window
         var pixlbuilderWindow = document.getElementById('pixlbuilder-window');
