@@ -1,358 +1,349 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/98.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/builder.png"/>
+    <title>Pixlnet</title>   
 </head>
 
 <body>
-    <div id="desktop">
-        <div class="desktop-icons">
-            <div class="desktop-icon pixlbuilder" id="pixlbuilder-icon">
-            Pixlbuilder
-          </div>
-      
-          <div class="desktop-icon documents" id="documents-icon">
-            Documents
-          </div>
+    <form id="windows">
+        <!-- Login and Shutdown -->
+        <input type="checkbox" id="login-screen-input" name="login-screen-input" />
+        <input type="checkbox" id="shutdown-screen-input" name="shutdown-screen-input" />
+        <input type="checkbox" name="start-button-input" id="start-button-input" />
+        <input type="radio" name="update-input" id="update-input" />
+        <div id="background"></div>
+        <!-- Minimize Windows -->
+        <input type="checkbox" id="windows-ie-input-min" name="windows-ie-input-min" />
+        <input type="checkbox" id="windows-documents-input-min" name="windows-documents-input-min" />
+        <input type="checkbox" id="windows-help-input-min" name="windows-help-input-min" />
+
+        <input type="checkbox" id="windows-builder-input-min" name="windows-builder-input-min" />
+        <input type="checkbox" id="windows-trash-input-min" name="windows-trash-input-min" />
+        <!-- Maximize Windows -->
+        <input type="checkbox" id="windows-ie-input-max" name="windows-ie-input-max" />
+        <input type="checkbox" id="windows-documents-input-max" name="windows-documents-input-max" />
+        <input type="checkbox" id="windows-help-input-max" name="windows-help-input-max" />
+
+        <input type="checkbox" id="windows-builder-input-max" name="windows-builder-input-max" />
+        <input type="checkbox" id="windows-trash-input-max" name="windows-trash-input-max" />
+        <!-- Window Order -->
+        <input type="radio" id="windows-ie-input-on-top" name="windows-order" />
+        <input type="radio" id="windows-documents-input-on-top" name="windows-order" />
+        <input type="radio" id="windows-help-input-on-top" name="windows-order" />
+
+        <input type="radio" id="windows-builder-input-on-top" name="windows-order" />
+        <input type="radio" id="windows-trash-input-on-top" name="windows-order" />
+        <!-- Window Visibility -->
+        <input type="checkbox" id="windows-ie-input" name="windows-ie-input" />
+        <input type="checkbox" id="windows-documents-input" name="windows-documents-input" />
+        <input type="checkbox" id="windows-help-input" name="windows-help-input" />
+
+        <input type="checkbox" id="windows-builder-input" name="windows-builder-input" />
+        <input type="checkbox" id="windows-trash-input" name="windows-trash-input" />
+
+        <div id="shutdown-screen"><label for="shutdown-screen-input"></div>
         </div>
-
-        
-
-        <div class="window active" id="pixlbuilder-window">
-            <div class="window-toolbar" style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    
-                    <div class="window-title">Pixlbuilder</div>
-                    
-                    <div class="window-buttons">
-                        <button class="window-button close"></button>
+        <div id="login-screen">
+            <div id="login-window" class="window windows-box-shadow">
+                <div class="header">Enter Password</div>
+                <div class="content">
+                    <img src="/images/user.png"
+                        alt="Windows" />
+                    <div class="select-box inverse-windows-box-shadow">
+                        <input type="radio" name="users" id="zark-muckerberg" checked />
+                        <input type="radio" name="users" id="donald-trump" />
+                        <input type="radio" name="users" id="spiderman" />
+                        <label for="zark-muckerberg" id="zark-muckerberg-label" />Zark Muckerberg</label>
+                        <label for="donald-trump" id="donald-trump-label" />Donald Trump</label>
+                        <label for="spiderman" id="spiderman-label" />Spiderman</label>
+                    </div>
+                    <input type="password" class="margin-input inverse-windows-box-shadow" />
+                    <div class="ok-cancel">
+                        <label for="login-screen-input" class="windows-box-shadow">OK</label>
+                        <label for="login-screen-input" class="windows-box-shadow">Cancel</label>
                     </div>
                 </div>
-            </div>
-            
-
-            <div class="window-content">
-                <div class="centered-image-wrapper">
-                    <img id="centered-image" class="centered-image" data-tab="none" src="images/placeholder.png" alt="Placeholder">
-                    <img id="background-image" class="centered-image" data-tab="background" src="images/clothing/none.png" alt="Background">
-                    <img id="base-image" class="centered-image" data-tab="base" src="images/clothing/none.png" alt="Base">
-                    <img id="clothing-image" class="centered-image" data-tab="clothing" src="images/clothing/none.png" alt="Clothing">
-                    <img id="headwear-image" class="centered-image" data-tab="headwear" src="images/clothing/none.png" alt="Headwear">
-                    <img id="eyewear-image" class="centered-image" data-tab="eyewear" src="images/clothing/none.png" alt="Eyewear">
-                  </div>
-            </div>
-
-
-            <div class="window-wrapper">
-                <div class="window-tabs">
-                    <button class="tabs-button active" data-tab="how-to">How To</button>
-                    <button class="tabs-button" data-tab="background">Background</button>
-                    <button class="tabs-button" data-tab="base">Base</button>
-                    <button class="tabs-button" data-tab="clothing">Clothing</button>
-                    <button class="tabs-button" data-tab="headwear">Headwear</button>
-                    <button class="tabs-button" data-tab="eyewear">Eyewear</button>
-                </div>
-                <div class="tab-content" id="how-to">
-                    <form>
-                        <fieldset>
-                            <legend>How It Works</legend>
-
-                            <div class="window-hero">
-                                <div class="window-hero-monitror">
-                                    <!-- TO DO - Monitor illustration -->
-                                </div>
-                            </div>
-
-                            <p><strong>1. Build Your Pixlpal</strong><br>We created a fun little builder for you to create your own pfp. Just select different traits from the category tabs above until your happy with your pal. You can see a visual representation of the pfp before inscribing in the image container above.<br><br><strong>2. Compile Your Traits</strong><br>This is where the magic of recursion comes in. Each trait represents a unique identifier which allows you to piece together your ordinal using an SVG file. Once you are finished building your Pixlpal you can press the "compile" button on the bottom right. This will open a new window where you can see the SVG code that has been created and download it. You will need to download this SVG file in order to inscribe (mint) your ordinal.<br><br><strong>3. Inscribe Your Ordinal</strong><br>Now that you have your SVG file you are ready to inscribe. This part is simple, just click on the "inscribe" button located below the SVG string that is generated for you and then drag that file into the upload field in unisat. This page will load on the page you need to upload the file to. You will need to pay a small fee (only a few $$) to inscribe and then you are all done. You should see the ordinal in your wallet after a short period of time.</p>
-
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="tab-content" id="background" style="display: none;">
-                    <form>
-                        <fieldset>
-                            <legend>Choose A Background</legend>
-
-                            <div class="image-grid">
-                                <div class="tab-image-container">
-                                    <img class="grid-image tab-image" src="images/background/none.png" alt="None">
-                                    <div class="x-overlay">
-                                    </div>
-                                  </div>
-                                <img class="grid-image tab-image" src="images/background/baby blue.png" alt="Baby Blue">
-                                <img class="grid-image tab-image" src="images/background/black.png" alt="Black">
-                                <img class="grid-image tab-image" src="images/background/blue.png" alt="Blue">
-                                <img class="grid-image tab-image" src="images/background/brown.png" alt="Brown">
-                                <img class="grid-image tab-image" src="images/background/green.png" alt="Green">
-                                <img class="grid-image tab-image" src="images/background/lime.png" alt="Lime">
-                                <img class="grid-image tab-image" src="images/background/orange.png" alt="Bitcoin Orange">
-                                <img class="grid-image tab-image" src="images/background/peach.png" alt="Peach">
-                                <img class="grid-image tab-image" src="images/background/pink.png" alt="Pink">
-                                <img class="grid-image tab-image" src="images/background/purple.png" alt="Purple">
-                                <img class="grid-image tab-image" src="images/background/red.png" alt="Red">
-                                <img class="grid-image tab-image" src="images/background/salmon.png" alt="Salmon">
-                                <img class="grid-image tab-image" src="images/background/yellow.png" alt="Yellow">
-                                <!-- Add more images as needed -->
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="tab-content" id="base" style="display: none;">
-                    <form>
-                        <fieldset>
-                            <legend>Choose A Base</legend>
-
-                            <div class="image-grid">
-                                <div class="tab-image-container">
-                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
-                                    <div class="x-overlay">
-                                    </div>
-                                  </div>
-                                <img class="grid-image tab-image" src="images/base/alien.png" alt="Alien">
-                                <img class="grid-image tab-image" src="images/base/ape.png" alt="Ape">
-                                <img class="grid-image tab-image" src="images/base/bear.png" alt="Bear">
-                                <img class="grid-image tab-image" src="images/base/kaiju.png" alt="Kaiju">
-                                <img class="grid-image tab-image" src="images/base/pepe.png" alt="Pepe">
-                                <img class="grid-image tab-image" src="images/base/skelly.png" alt="Skeleton">
-                                <img class="grid-image tab-image" src="images/base/zombie.png" alt="Zombie">
-                                <!-- Add more images as needed -->
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="tab-content" id="clothing" style="display: none;">
-                    <form>
-                        <fieldset>
-                            <legend>Choose Some Clothing</legend>
-
-                            <div class="image-grid">
-                                <div class="tab-image-container">
-                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
-                                    <div class="x-overlay">
-                                    </div>
-                                  </div>
-                                <img class="grid-image tab-image" src="images/clothing/apron.png" alt="Apron">
-                                <img class="grid-image tab-image" src="images/clothing/barca.png" alt="Barca">
-                                <img class="grid-image tab-image" src="images/clothing/black jacket.png" alt="Black Jacket">
-                                <img class="grid-image tab-image" src="images/clothing/black suit.png" alt="Black Blazer">
-                                <img class="grid-image tab-image" src="images/clothing/blue jacket.png" alt="Blue Jacket">
-                                <img class="grid-image tab-image" src="images/clothing/blue sandlot.png" alt="Blue Sandlot">
-                                <img class="grid-image tab-image" src="images/clothing/blue stripes.png" alt="Blue Stripes">
-                                <img class="grid-image tab-image" src="images/clothing/blue varsity.png" alt="Blue Varsity">
-                                <img class="grid-image tab-image" src="images/clothing/brazil.png" alt="Brazil">
-                                <img class="grid-image tab-image" src="images/clothing/bulls.png" alt="Bulls">
-                                <img class="grid-image tab-image" src="images/clothing/checkered.png" alt="Checkered">
-                                <img class="grid-image tab-image" src="images/clothing/chef.png" alt="Chef">
-                                <img class="grid-image tab-image" src="images/clothing/chiefs.png" alt="Chiefs">
-                                <img class="grid-image tab-image" src="images/clothing/country club.png" alt="Country Club">
-                                <img class="grid-image tab-image" src="images/clothing/devils.png" alt="Devils">
-                                <img class="grid-image tab-image" src="images/clothing/flannel.png" alt="Flannel">
-                                <img class="grid-image tab-image" src="images/clothing/giants.png" alt="Giants">
-                                <img class="grid-image tab-image" src="images/clothing/goat.png" alt="Goat">
-                                <img class="grid-image tab-image" src="images/clothing/green sweater.png" alt="Green Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/grey blazer.png" alt="Grey Blazer">
-                                <img class="grid-image tab-image" src="images/clothing/grey varsity.png" alt="Grey Varsity">
-                                <img class="grid-image tab-image" src="images/clothing/hipster.png" alt="Hipster">
-                                <img class="grid-image tab-image" src="images/clothing/hype.png" alt="Hype">
-                                <img class="grid-image tab-image" src="images/clothing/kamono.png" alt="Kamono">
-                                <img class="grid-image tab-image" src="images/clothing/knicks.png" alt="Knicks">
-                                <img class="grid-image tab-image" src="images/clothing/lakeshow.png" alt="Lakeshow">
-                                <img class="grid-image tab-image" src="images/clothing/moontee.png" alt="Moon">
-                                <img class="grid-image tab-image" src="images/clothing/niners.png" alt="Niners">
-                                <img class="grid-image tab-image" src="images/clothing/ocean sweater.png" alt="Ocean Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/overalls.png" alt="Overalls">
-                                <img class="grid-image tab-image" src="images/clothing/pajamas.png" alt="Pajamas">
-                                <img class="grid-image tab-image" src="images/clothing/paris.png" alt="Paris">
-                                <img class="grid-image tab-image" src="images/clothing/pats.png" alt="Pats">
-                                <img class="grid-image tab-image" src="images/clothing/Peace Sweater.png" alt="Peace Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/pepetee.png" alt="Pepe Tee">
-                                <img class="grid-image tab-image" src="images/clothing/pirate.png" alt="Pirate">
-                                <img class="grid-image tab-image" src="images/clothing/pixlburry sweater.png" alt="Pixlburry Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/pucci.png" alt="Pucci">
-                                <img class="grid-image tab-image" src="images/clothing/red jacket.png" alt="Red Jacket">
-                                <img class="grid-image tab-image" src="images/clothing/red rugby.png" alt="Red Rugby">
-                                <img class="grid-image tab-image" src="images/clothing/red sandlot.png" alt="Red Sandlot">
-                                <img class="grid-image tab-image" src="images/clothing/red stripes.png" alt="Red Stripes">
-                                <img class="grid-image tab-image" src="images/clothing/red sweater.png" alt="Red Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/red varsity.png" alt="Red Varsity">
-                                <img class="grid-image tab-image" src="images/clothing/red.png" alt="Red Tee">
-                                <img class="grid-image tab-image" src="images/clothing/referee.png" alt="Referee">
-                                <img class="grid-image tab-image" src="images/clothing/sailor.png" alt="Sailor">
-                                <img class="grid-image tab-image" src="images/clothing/scientist.png" alt="Scientist">
-                                <img class="grid-image tab-image" src="images/clothing/service.png" alt="Service">
-                                <img class="grid-image tab-image" src="images/clothing/sixers.png" alt="Sixers">
-                                <img class="grid-image tab-image" src="images/clothing/skellytee.png" alt="Skelly Tee">
-                                <img class="grid-image tab-image" src="images/clothing/smiley.png" alt="Smiley">
-                                <img class="grid-image tab-image" src="images/clothing/stark.png" alt="Stark">
-                                <img class="grid-image tab-image" src="images/clothing/suspenders.png" alt="Suspenders">
-                                <img class="grid-image tab-image" src="images/clothing/track jacket.png" alt="Track Jacket">
-                                <img class="grid-image tab-image" src="images/clothing/trainer.png" alt="Trainer">
-                                <img class="grid-image tab-image" src="images/clothing/trippy sweater.png" alt="Trippy Sweater">
-                                <img class="grid-image tab-image" src="images/clothing/tuxedo.png" alt="Tuxedo">
-                                <img class="grid-image tab-image" src="images/clothing/verified.png" alt="Verified">
-                                <img class="grid-image tab-image" src="images/clothing/white.png" alt="White">
-                                <img class="grid-image tab-image" src="images/clothing/work shirt.png" alt="Work Shirt">
-                                <img class="grid-image tab-image" src="images/clothing/yellow rugby.png" alt="Yellow Rugby">
-                                <!-- Add more images as needed -->
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="tab-content" id="headwear" style="display: none;">
-                    <form>
-                        <fieldset>
-                            <legend>Choose Some Headwear</legend>
-
-                            <div class="image-grid">
-                                <div class="tab-image-container">
-                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
-                                    <div class="x-overlay">
-                                    </div>
-                                  </div>
-                                <img class="grid-image tab-image" src="images/headwear/armyhelmet.png" alt="Army Helmetiiiiiiiiiiiiiiiiiiiiiiiiiiii">
-                                <img class="grid-image tab-image" src="images/headwear/backwardsblack.png" alt="Backwards Cap Black">
-                                <img class="grid-image tab-image" src="images/headwear/backwardsblue.png" alt="Backwards Cap Blue">
-                                <img class="grid-image tab-image" src="images/headwear/backwardsred.png" alt="Backwards Cap Red">
-                                <img class="grid-image tab-image" src="images/headwear/baloonsnake.png" alt="Balloon Snake">
-                                <img class="grid-image tab-image" src="images/headwear/beaniecap.png" alt="Beanie Cap">
-                                <img class="grid-image tab-image" src="images/headwear/blackcap.png" alt="Black Cap">
-                                <img class="grid-image tab-image" src="images/headwear/orangecap.png" alt="Orange Cap">
-                                <img class="grid-image tab-image" src="images/headwear/beekeeper.png" alt="Bee Keeper">
-                                <img class="grid-image tab-image" src="images/headwear/bluedurag.png" alt="Blue Durag">
-                                <img class="grid-image tab-image" src="images/headwear/reddurag.png" alt="Red Durag">
-                                <img class="grid-image tab-image" src="images/headwear/bunnyears.png" alt="Bunny Ears">
-                                <img class="grid-image tab-image" src="images/headwear/chefhat.png" alt="Chef Hat">
-                                <img class="grid-image tab-image" src="images/headwear/cowboyhat.png" alt="Cowboy Hat">
-                                <img class="grid-image tab-image" src="images/headwear/crown.png" alt="Crown">
-                                <img class="grid-image tab-image" src="images/headwear/flower.png" alt="Flower">
-                                <img class="grid-image tab-image" src="images/headwear/flowercrown.png" alt="Flower Crown">
-                                <img class="grid-image tab-image" src="images/headwear/hardhat.png" alt="Hard Hat">
-                                <img class="grid-image tab-image" src="images/headwear/headphones.png" alt="Headphones">
-                                <img class="grid-image tab-image" src="images/headwear/helmet.png" alt="Helmet">
-                                <img class="grid-image tab-image" src="images/headwear/hockey.png" alt="Hockey">
-                                <img class="grid-image tab-image" src="images/headwear/luckyhat.png" alt="Lucky Hat">
-                                <img class="grid-image tab-image" src="images/headwear/luigi.png" alt="Luigi">
-                                <img class="grid-image tab-image" src="images/headwear/mario.png" alt="Mario">
-                                <img class="grid-image tab-image" src="images/headwear/olivebucket.png" alt="Olive Bucket">
-                                <img class="grid-image tab-image" src="images/headwear/whitebucket.png" alt="White Bucket">
-                                <img class="grid-image tab-image" src="images/headwear/orangebeanie.png" alt="Orange Beanie">
-                                <img class="grid-image tab-image" src="images/headwear/redbeanie.png" alt="Red Beanie">
-                                <img class="grid-image tab-image" src="images/headwear/piratehat.png" alt="Pirate Hat">
-                                <img class="grid-image tab-image" src="images/headwear/skipatrol.png" alt="Ski Patrol">
-                                <img class="grid-image tab-image" src="images/headwear/sombrero.png" alt="Sombrero">
-                                <img class="grid-image tab-image" src="images/headwear/trainerhat.png" alt="Trainer Hat">
-                                <img class="grid-image tab-image" src="images/headwear/wizardhat.png" alt="Wizard Hat">
-                                <!-- Add more images as needed -->
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="tab-content" id="eyewear" style="display: none;">
-                    <form>
-                        <fieldset>
-                            <legend>Choose Some Eyewear</legend>
-
-                            <div class="image-grid">
-                                <div class="tab-image-container">
-                                    <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/282/1o8e01.png" alt="None">
-                                    <div class="x-overlay">
-                                    </div>
-                                  </div>
-                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/102/XqT38a.png" alt="Nouns Glasses">
-                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/2424/zKRU7o.png" alt="Bitcoin Maxi">
-                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img922/2806/DRYdmQ.png" alt="Purple Mask">
-                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img924/8213/84jZRc.png" alt="6D Glasses">
-                                <img class="grid-image tab-image" src="https://imagizer.imageshack.com/img923/6562/3e3IrY.png" alt="VR Headset">
-                                <!-- Add more images as needed -->
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="window-actions">
-                    <button class="window-action-button" id="compile-button">Compile</button>
-                    <button class="window-action-button" id="clear-button">Clear</button>
-                </div>
-            </div>
-
-            
-            
-        </div>
-        <div class="window" id="doc-window" style="width: 80%; height: 30%;">
-            <div class="window-toolbar">
-                <div class="window-title">Additional Info</div>
-                <div class="window-buttons">
-                    <button class="window-button close"></button>
-                </div>
-            </div>
-            <div class="window-content" style="display: flex; flex-direction: column; align-items: center;">
-                <textarea id="svg-code-textarea" style="width: 100%; height: 53%; padding: 10px;">Hey pals..
-                    
-First things first I made this strictly for fun.. I needed to test a few things and got a bit carried away. Sure there are plenty of templates for desktops similar to this out there but I made this from scratch the hard way for some unknown reason. Anyway the point of this website is to educate myself and others on how recursive inscriptions work. It's really not all that complicated and it's a pretty cool standard to mess with. I'm not sure how to feel about recursion but it does allow us to do some interesting things on Bitcoin so why not test it out. This experiment was not thrown together overnight, a good amount of time went into this. Ultimately this experiment will become my genesis collection and be indexed once the initial set is all gone. I don't plan on advertising this or shilling it anywhere because I want people who support me or support builders to get involved. Lastly to those thinking of "frontrunning" this go for it I don't mind and will gladly index your creations if they are original and are submitted before the cutoff.</textarea>
-                <button id="twitter" style="width: 150px; padding: 10px; margin-top: 10px;" onclick="window.open('https://twitter.com/Pixltoshi', '_blank')">Twitter</button>
-            </div>
-            <div id="iframe-container">
-                <iframe id="compiled-code-iframe" frameborder="0" width="100%" height="100%" src="" style="visibility: hidden;"></iframe>
-            </div>          
-            </div>
-
-            
-            <div id="compiled-code-window" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                <div class="window-toolbar" style="display: flex; justify-content: space-between; align-items: center; touch-action: none;">
-                    <div class="window-title">Compiled Code</div>
-                    <button class="window-button close button custom-close-button" id="close-button"></button>
-                </div>
-                <div class="window-content" style="padding: 20px;">
-                    <textarea id="svg-code-textarea" style="width: 100%; height: 80%; padding: 10px;">&lt;svg width="360px" height="360px" xmlns="http://www.w3.org/2000/svg"&gt;&lt;image href="/content/" /&gt;&lt;image href="/content/" /&gt;&lt;image href="/content/" /&gt;&lt;image href="/content/" /&gt;&lt;image href="/content/" /&gt;&lt;/svg&gt;</textarea>
-                    <div style="display: flex; justify-content: center; margin-top: 20px;">
-                        <a href="data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%22360px%22%20height%3D%22360px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cimage%20href%3D%22%2Fcontent%2F%22%20%2F%3E%3Cimage%20href%3D%22%2Fcontent%2F%22%20%2F%3E%3Cimage%20href%3D%22%2Fcontent%2F%22%20%2F%3E%3Cimage%20href%3D%22%2Fcontent%2F%22%20%2F%3E%3Cimage%20href%3D%22%2Fcontent%2F%22%20%2F%3E%3C%2Fsvg%3E" download="code.svg">
-                            <button id="download-button" style="width: 150px; padding: 10px;">Download</button>
-                        </a>
-                        <button id="inscribe-button" style="width: 150px; padding: 10px;" onclick="window.open('https://unisat.io/inscribe', '_blank')">Inscribe</button>
-                    </div>
-                </div>
-            </div>
-            
-            
-            </div>
-            
-
-            
-            
-
-        <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
-        <script src="script.js"></script>
-        
-        <div id="toolbar">
-            <div class="toolbar-start-menu">
-                <button class="start-button" id="start-button">
-                    Start
-                </button>
-
-                <div class="start-menu-wrapper" id="start-menu-wrapper">
-                    <div class="start-menu-title">
-
-                    </div>
-                    <div class="start-menu">
-                        <button class="start-menu-link" id="shutdown-button">
-                            <img src="/images/icons/midcomp.png" class="button-icon">
-                            Pixlbuilder
-                        </button>
-                        <button class="start-menu-link" id="restart-button">
-                            <img src="/images/icons/help.png" class="button-icon">
-                            Information
-                        </button>
-                        <button class="start-menu-link" id="logoff-button">
-                            <img src="/images/icons/terminal.png" class="button-icon">
-                            Terminal
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="toolbar-right">
-                <div class="time"><span class="hour"></span>:<span class="minutes"></span> AM</div>
             </div>
         </div>
-    </body>
+        <div id="desktop">
+            <label for="windows-ie-input" class="desktop-item">
+                <div class="icon"><img
+                    src="/images/internet.png"
+                        alt="" /></div>
+                <div class="text">Marketplace</div>
+            </label>
+            <label for="windows-builder-input" class="desktop-item">
+                <div class="icon"><img
+                    src="/images/builder.png"
+                        alt="" /> </div>
+                <div class="text">Pixlbuilder</div>
+            </label>
+            <label for="windows-documents-input" class="desktop-item">
+                <div class="icon"><img
+                        src="/images/docs.png"
+                        alt="" /> </div>
+                <div class="text">Documents</div>
+            </label>
+            <label for="windows-trash-input" class="desktop-item">
+                <div class="icon"><img
+                    src="/images/trash.png"
+                        alt="" /> </div>
+                <div class="text">Trash</div>
+            </label>
+        </div>
+        <div id="all-windows">
+            <div class="window ie windows-box-shadow">
+                <div class="header"><label for="windows-ie-input-on-top">Marketplace</label>
+                    <div class="header-buttons">
+                        <label for="windows-ie-input-min" class="minimize windows-box-shadow"></label>
+                        <label for="windows-ie-input-max" class="maximize windows-box-shadow"></label>
+                        <label for="windows-ie-input" class="close windows-box-shadow">X</label>
+                    </div>
+                </div>
+                <div class="options line">
+                    <div class="item">File</div>
+                    <div class="item">Home</div>
+                    <div class="item">Share</div>
+                    <div class="item">View</div>
+                    <div class="item">Tools</div>
+                </div>
+                <div class="options padding">
+                    <div class="item">Address</div>
+                    <input type="text" class="inverse-windows-box-shadow" value="https://magiceden.io/ordinals" />
+                </div>
+                <div class="content">
+                    <iframe src="https://magiceden.io/ordinals"></iframe>
+                </div>
+            </div>
+            <div class="window help windows-box-shadow">
+                <div class="header"><label for="windows-help-input-on-top">Windows Help</label>
+                    <div class="header-buttons">
+                        <label for="windows-help-input-min" class="minimize windows-box-shadow"></label>
+                        <label for="windows-help-input-max" class="maximize windows-box-shadow"></label>
+                        <label for="windows-help-input" class="close windows-box-shadow">X</label>
+                    </div>
+                </div>
+                <div class="options padding">
+                    <div class="item">Location</div>
+                    <input type="text" class="inverse-windows-box-shadow" value="General Help" />
+                </div>
+                <div class="tab-box-content">
+                    <input name="topics-radio" id="topic-1" type="radio" checked />
+                    <input name="topics-radio" id="topic-2" type="radio" />
+                    <input name="topics-radio" id="topic-3" type="radio" />
+                    <input name="topics-radio" id="topic-4" type="radio" />
+                    <div class="tab-box">
+                        <div class="tab-header">CSS Windows</div>
+                        <ul class="box">
+                            <li><label for="topic-1"><img
+                                src="/images/sweep.png"
+                                        alt="" /> Why is my copy of Windows feature limited?</label></li>
+                            <li><label for="topic-2"><img
+                                src="/images/sweep.png"
+                                        alt="" /> Why can't I move Windows?</label></li>
+                            <li><label for="topic-3"><img
+                                src="/images/sweep.png"
+                                        alt="" /> Is it a good idea to make CSS Windows?</label></li>
+                            <li><label for="topic-4"><img
+                                src="/images/sweep.png"
+                                        alt="" /> How long did it take to make CSS Windows?</label></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <div class="topic-1-content">
+                            <h2>Why is my copy of Windows feature limited?</h2>
+                            <p>Since this version of Windows was built entirely with CSS, you may notice some features
+                                are missing. This is because of the limitations of CSS. <a
+                                    href="https://fjolt.com/category/css" target="_blank">To learn more about CSS, you
+                                    can click here</a>.</p>
+                        </div>
+                        <div class="topic-2-content">
+                            <h2>Why can't I move windows?</h2>
+                            <p>Although CSS lets you do quite a lot of things, unfortunately drag and drop is not one of
+                                them. To enable drag and drop on this version of windows, <a
+                                    href="https://fjolt.com/series/learn-javascript" target="_blank">please learn
+                                    Javascript first</a>, and then write the necessary scripts to add drag and drop.</p>
+                        </div>
+                        <div class="topic-3-content">
+                            <h2>Why can't I move windows?</h2>
+                            <p>Creating Windows in CSS is quite difficult, and requires a lot of input elements.
+                                Therefore, it may be recommended that you use another language if you wish to make a
+                                fully fledged operating system. Even so, it is a good way to demonstrate the
+                                <strong>power</strong> of CSS.
+                            </p>
+                        </div>
+                        <div class="topic-4-content">
+                            <h2>How long did it take to make CSS Windows?</h2>
+                            <p>Roughly 1.5 weeks, on and off.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window trash windows-box-shadow">
+                <div class="header"><label for="windows-trash-input-on-top">Trash</label>
+                    <div class="header-buttons">
+                        <label for="windows-trash-input-min" class="minimize windows-box-shadow"></label>
+                        <label for="windows-trash-input-max" class="maximize windows-box-shadow"></label>
+                        <label for="windows-trash-input" class="close windows-box-shadow">X</label>
+                    </div>
+                </div>
+                <div class="options line">
+                    <div class="item">File</div>
+                    <div class="item">Home</div>
+                    <div class="item">Share</div>
+                    <div class="item">View</div>
+                    <div class="item">Tools</div>
+                </div>
+                <div class="content white">
+                    <label class="file secret-codes" for="secret-codes">
+                        <span class="image"><img
+                            src="/images/help.png"
+                                alt="" /></span>
+                        <span class="text">satoshi.js</span>
+                    </label>
+                    <label class="file diary" for="diary">
+                        <span class="image"><img
+                            src="/images/help.png"
+                                alt="" /></span>
+                        <span class="text">bitcoin.html</span>
+                    </label>
+                </div>
+            </div>
+            <div class="window documents windows-box-shadow">
+                <div class="header"><label for="windows-documents-input-on-top">Documents</label>
+                    <div class="header-buttons">
+                        <label for="windows-documents-input-min" class="minimize windows-box-shadow"></label>
+                        <label for="windows-documents-input-max" class="maximize windows-box-shadow"></label>
+                        <label for="windows-documents-input" class="close windows-box-shadow">X</label>
+                    </div>
+                </div>
+                <div class="options line">
+                    <div class="item">File</div>
+                    <div class="item">Home</div>
+                    <div class="item">Share</div>
+                    <div class="item">View</div>
+                    <div class="item">Tools</div>
+                </div>
+                <div class="content white">
+                    <label class="file secret-codes" for="secret-codes">
+                        <span class="image"><img
+                            src="/images/help.png"
+                                alt="" /></span>
+                        <span class="text">satoshi.js</span>
+                    </label>
+                    <label class="file diary" for="diary">
+                        <span class="image"><img
+                            src="/images/help.png"
+                                alt="" /></span>
+                        <span class="text">bitcoin.html</span>
+                    </label>
+                </div>
+            </div>
+
+
+                <div class="window builder windows-box-shadow">
+                    <div class="header"><label for="windows-builder-input-on-top">Pixlbuilder</label>
+                        <div class="header-buttons">
+                            <label for="windows-builder-input-min" class="minimize windows-box-shadow"></label>
+                            <label for="windows-builder-input-max" class="maximize windows-box-shadow"></label>
+                            <label for="windows-builder-input" class="close windows-box-shadow">X</label>
+                        </div>
+                    </div>
+                    <div class="options line">
+                        <div class="item">File</div>
+                        <div class="item">Home</div>
+                        <div class="item">Share</div>
+                        <div class="item">View</div>
+                        <div class="item">Tools</div>
+                    </div>
+                    <div class="content white">
+                        <label class="file secret-codes" for="secret-codes">
+                            <span class="image"><img
+                                src="/images/help.png"
+                                    alt="" /></span>
+                            <span class="text">satoshi.js</span>
+                        </label>
+                        <label class="file diary" for="diary">
+                            <span class="image"><img
+                                src="/images/help.png"
+                                    alt="" /></span>
+                            <span class="text">bitcoin.html</span>
+                        </label>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="start-bar">
+            <div id="start-button-items">
+                <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
+                <div id="items">
+                    <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img
+                                src="/images/internet.png"
+                                alt="" /></span><span>Marketplace</span></label>
+                    <label for="windows-help-input-min" class="help-tab tab windows-box-shadow"><span><img
+                        src="/images/help.png"
+                                alt="" /></span><span>Help Center</span></label>
+
+                    <label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img
+                        src="/images/docs.png"
+                                alt="" /></span><span>Documents</span></label>
+                    <label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img
+                        src="/images/trash.png"
+                                alt="" /></span><span>Trash</span></label>
+                    <label for="windows-builder-input-min" class="builder-tab tab windows-box-shadow"><span><img
+                                src="/images/builder.png"
+                                alt="" /></span><span>Pixlbuilder</span></label>
+                </div>
+            </div>
+            <div id="start-menu" class="windows-box-shadow">
+                <div id="windows-start-menu-blue">Pixlnet<span>Beta</span></div>
+                <ul>
+                    <li class="programs"><label><img
+                        src="/images/apps.png"
+                                style="width: 1.5rem;" alt="" /> Applications</label>
+                        <ul class="windows-box-shadow">
+                            <li><label for="windows-ie-input"><img
+                                        src="/images/internet.png"
+                                        alt="" /><input type="checkbox" /> Marketplace</label></li>
+                            <li><label for="windows-builder-input"><img
+                                        src="/images/builder.png"
+                                        alt="" /><input type="checkbox" /> Pixlbuilder</label></li>
+                        </ul>
+                    </li>
+                    <li><label for="windows-documents-input"><img
+                        src="/images/docs.png"
+                                style="width: 1.5rem;" alt="" /> Documents</label></li>
+                    <li><label for="windows-help-input"><img
+                        src="/images/help.png"
+                                style="width: 1.5rem;" alt="" /> Help</label></li>            
+                    <li class="line"><label for="windows-terminal-input"><img
+                        src="/images/terminal.png"
+                                style="width: 1.5rem;" alt="" /> Terminal</label></li>
+                    <li><label for="login-screen-input"><img
+                        src="/images/user.png"
+                                style="margin: 0 0.5rem 0 0;" alt="" /> Log Off <span class="spiderman logout-prompt">
+                                Guest...</span><span class="zark-muckerberg logout-prompt"> Pixltoshi...</span></label></li>
+                    <li><label for="shutdown-screen-input"><img
+                        src="/images/shutdown.png"
+                                style="margin: 0 0.5rem 0 0;" alt="" /> Shutdown</label></li>
+                </ul>
+            </div>
+            <div id="time-options"></div>
+        </div>
+    </form>
+</body>
+
 </html>
