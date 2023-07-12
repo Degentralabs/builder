@@ -4,20 +4,40 @@ var inscribeButton;
 
 
 window.onload = function() {
+    // Initialize Draggabilly for the initial window
     inscribeButton = document.getElementById('inscribe-button');
+    var initialWindow = document.querySelector('.window');
+    var windows = document.querySelectorAll('.window');
     initializeDraggableWindow();
     initializeStartMenu();
     initializeTabButtons();
     initializeActionButtons();
-    initializeCloseButton(); // Add this line
-  
-      // Add an event listener to the close button
-  document.getElementById('active-window-close-button').addEventListener('click', function() {
-    // Get the active window
-    var activeWindow = document.querySelector('.window.active');
+    initializeCloseButton();
 
-    // Remove the active window
-    if (activeWindow) {
+    var pixlbuilderWindow = document.querySelector('#pixlbuilder-window');
+    var draggie = new Draggabilly(pixlbuilderWindow, {
+        handle: '.window-toolbar'
+    });
+
+    draggie.on('dragEnd', function() {
+        pixlbuilderWindow.classList.remove('active');
+    });
+
+    // Initialize Draggabilly for each window
+    windows.forEach(function(window) {
+        new Draggabilly(window, {
+            handle: '.window-toolbar'
+        });
+    });
+        
+  
+        // Add an event listener to the close button
+        document.getElementById('active-window-close-button').addEventListener('click', function() {
+        // Get the active window
+        var activeWindow = document.querySelector('.window.active');
+
+        // Remove the active window
+        if (activeWindow) {
         activeWindow.style.display = 'none'; // hides the window
         // or
         // activeWindow.remove(); // completely removes the window from the DOM
@@ -38,15 +58,17 @@ window.onload = function() {
   }
   
 
-function initializeDraggableWindow() {
-  var draggie = new Draggabilly('.window', {
-    handle: '.window-toolbar'
-  });
+  function initializeDraggableWindow() {
+    var windows = document.querySelectorAll('.window');
+    windows.forEach(function(window) {
+        new Draggabilly(window, {
+            handle: '.window-toolbar'
+        });
+    });
 }
 
 
-function centerWindow() {
-    var windowElement = document.querySelector('.window');
+function centerWindow(windowElement) {
     setTimeout(function() {
       var windowHeight = windowElement.offsetHeight;
       var windowWidth = windowElement.offsetWidth;
@@ -54,7 +76,11 @@ function centerWindow() {
       windowElement.style.top = `calc(50% - ${windowHeight / 2}px)`;
       windowElement.style.left = `calc(50% - ${windowWidth / 2}px)`;
     }, 0);
-  }  
+}
+
+var myWindow = document.querySelector('#pixlbuilder-window');
+centerWindow(myWindow);
+
 
 function initializeStartMenu() {
   document.getElementById('start-menu-wrapper').style.display = 'none';
@@ -146,10 +172,10 @@ function updateCenteredImage() {
     centeredImage.src = selectedImages[activeTab];
   }
   
-function initializeActionButtons() {
-  document.getElementById('compile-button').addEventListener('click', compileSVG);
-  document.getElementById('clear-button').addEventListener('click', clearSVG);
-  document.getElementById('inscribe-button').addEventListener('click', inscribeSVG);
+  function initializeActionButtons() {
+    document.getElementById('compile-button').addEventListener('click', compileSVG);
+    document.getElementById('clear-button').addEventListener('click', clearSVG);
+    document.getElementById('inscribe-button').addEventListener('click', inscribeSVG);
 }
 
 function compileSVG() {
@@ -177,15 +203,6 @@ function initializeDraggable(element) {
       handle: '.window-toolbar'
     });
   }
-  
-  window.onload = function() {
-    // Initialize Draggabilly for the initial window
-    var initialWindow = document.querySelector('.window');
-    initializeDraggable(initialWindow);
-    initializeStartMenu();
-    initializeTabButtons();
-    initializeActionButtons();
-  }
 
     // Get the Pixlbuilder window and close button elements
     var pixlbuilderWindow = document.getElementById('pixlbuilder-window');
@@ -202,16 +219,21 @@ function initializeDraggable(element) {
     });
 
 
-
-
-  document.getElementById('documents-icon').addEventListener('dblclick', function() {
-    document.getElementById('doc-window').style.display = 'block';
-
-    // Show the Documents window
-    documentsWindow.style.display = 'block';
-
-    // Center the Documents window
-    centerWindow();
+// Example event handler for double-clicking the document icon
+document.getElementById("documents-icon").addEventListener("dblclick", function() {
+    // Set the desired starting position
+    var topPosition = 100;  // in pixels
+    var leftPosition = 200; // in pixels
+    
+    // Get the window element
+    var windowElement = document.getElementById("doc-window");
+    
+    // Modify the CSS properties
+    windowElement.style.top = topPosition + "px";
+    windowElement.style.left = leftPosition + "px";
+    
+    // Show the window
+    windowElement.style.display = "block";
   });
 
   var docWindow = document.querySelector('#doc-window'); // Replace '#doc-window' with the actual selector for the new window
@@ -221,92 +243,55 @@ function initializeDraggable(element) {
         docWindow.style.display = 'none';
     });
 
-    docWindow.querySelector('.window-button.help').addEventListener('click', function() {
-        // Code for what happens when the help button is clicked goes here
-    });
-    // ...
-
   
-  function openCompiledCodeWindow(compiledCode) {
-    // Create a new div element
-    var newWindow = document.createElement('div');
-
-    // Add classes to the div to style it like a window
-    newWindow.classList.add('window');
-    newWindow.classList.add('active');
-
-    // Set the inner HTML of the div
-    newWindow.innerHTML = `
-    <div class="window-toolbar" style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="window-title">Compiled Code</div>
-        <button class="window-button close button custom-close-button" id="close-button"></button>
-    </div>
-    <div class="window-content" style="padding: 20px;">
-        <textarea id="svg-code-textarea" style="width: 100%; height: 80%; padding: 10px;">${compiledCode}</textarea>
-        <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <a href="data:image/svg+xml;charset=utf-8,${encodeURIComponent(compiledCode)}" download="code.svg">
-                <button id="download-button" style="width: 150px; padding: 10px;">Download</button>
-            </a>
-            <button id="inscribe-button" style="width: 150px; padding: 10px;" onclick="window.open('https://unisat.io/inscribe', '_blank')">Inscribe</button>
-        </div>
-    </div>
-    `;
-
-    // Append the new window to the desktop
-    document.getElementById('desktop').appendChild(newWindow);
-
-    // Calculate the center position of the window
-    var windowWidth = newWindow.offsetWidth;
-    var windowHeight = newWindow.offsetHeight;
-    var windowLeft = (window.innerWidth - windowWidth) / 2;
-    var windowTop = (window.innerHeight - windowHeight) / 2;
-
-    // Set the position of the window
-    newWindow.style.left = windowLeft + 'px';
-    newWindow.style.top = windowTop + 'px';
-
-    // Initialize Draggabilly for the new window
-    initializeDraggable(newWindow);
-
-    // Add an event listener to the close button
-    document.getElementById('close-button').addEventListener('click', function() {
-        // Remove the new window from the webpage
-        newWindow.remove();
-    });
-
-    // Add an event listener to the copy button
-    document.getElementById('copy-button').addEventListener('click', function() {
-        // Select the SVG code
-        var svgCodeTextarea = document.getElementById('svg-code-textarea');
-        svgCodeTextarea.select();
-
-        // Copy the SVG code to the clipboard
-        document.execCommand('copy');
-    });
-}
-
-  
+    function openCompiledCodeWindow(compiledCode) {
+        // Create a new div element
+        var newWindow = document.createElement('div');
+    
+        // Add classes to the div to style it like a window
+        newWindow.classList.add('window');
+    
+        // Set the inner HTML of the div
+        newWindow.innerHTML = document.getElementById('compiled-code-window').innerHTML;
+    
+        // Append the new window to the desktop
+        document.getElementById('desktop').appendChild(newWindow);
+    
+        // Calculate the center position of the window based on the current viewport size
+        var windowWidth = newWindow.offsetWidth;
+        var windowHeight = newWindow.offsetHeight;
+        var windowLeft = (window.innerWidth - windowWidth) / 2;
+        var windowTop = (window.innerHeight - windowHeight) / 2;
+    
+        // Adjust the window position if it goes beyond the viewport boundaries
+        if (windowLeft < 0) {
+            windowLeft = 0;
+        } else if (windowLeft + windowWidth > window.innerWidth) {
+            windowLeft = window.innerWidth - windowWidth;
+        }
+        if (windowTop < 0) {
+            windowTop = 0;
+        } else if (windowTop + windowHeight > window.innerHeight) {
+            windowTop = window.innerHeight - windowHeight;
+        }
+    
+        // Set the position of the window
+        newWindow.style.left = windowLeft + 'px';
+        newWindow.style.top = windowTop + 'px';
+    
+        // Initialize Draggabilly for the new window
+        initializeDraggable(newWindow);
+    
+        // Add an event listener to the close button
+        newWindow.querySelector('#close-button').addEventListener('click', function() {
+            // Remove the new window from the webpage
+            newWindow.remove();
+        });
+    }
+    
+    
 
 
-
-    // Append the new window to the desktop
-    document.getElementById('desktop').appendChild(newWindow);
-
-    // Add an event listener to the close button
-    document.getElementById('close-button').addEventListener('click', function() {
-        // Remove the new window from the webpage
-        newWindow.remove();
-    });
-
-    // Add an event listener to the copy button
-    document.getElementById('copy-button').addEventListener('click', function() {
-        // Select the SVG code
-        var svgCodeTextarea = document.getElementById('svg-code-textarea');
-        svgCodeTextarea.select();
-
-        // Copy the SVG code to the clipboard
-        document.execCommand('copy');
-    });
 
 
 function clearSVG() {
@@ -339,13 +324,10 @@ function clearSVG() {
     });
   }
 
-function inscribeSVG() {
-  // Add a click event listener to the button
-  inscribeButton.addEventListener('click', function() {
+  function inscribeSVG() {
     // Open the external website in a new window
     window.open('https://www.external-website.com', '_blank');
-  });
-  console.log('Inscribe button clicked');
+    console.log('Inscribe button clicked');
 }
 
 let date = new Date();
@@ -401,3 +383,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
         });
     });
+
+    // Example of adding a class to an element
+var pixlbuilderWindow = document.querySelector('#pixlbuilder-window');
+pixlbuilderWindow.classList.add('active');
+
+// Log a message to the console
+console.log('Added active class to pixlbuilder-window');
+
+// Example of removing a class from an element
+pixlbuilderWindow.classList.remove('active');
+
+// Log a message to the console
+console.log('Removed active class from pixlbuilder-window');
+
+
+
+document.getElementById('pixlbuilder-button').addEventListener('click', function() {
+  pixlbuilderWindow.style.display = 'block';
+});
+
+document.getElementById('info-button').addEventListener('click', function() {
+  documentsWindow.style.display = 'block';
+});
+
+
+
+function openWindow(windowId) {
+  // Get all windows
+  var windows = document.getElementsByClassName('window');
+
+  // Hide all windows
+  for (var i = 0; i < windows.length; i++) {
+    windows[i].style.display = 'none';
+  }
+
+  // Show the clicked window
+  document.getElementById(windowId).style.display = 'block';
+}
