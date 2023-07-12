@@ -421,4 +421,3 @@ function openWindow(windowId) {
   // Show the clicked window
   document.getElementById(windowId).style.display = 'block';
 }
-
